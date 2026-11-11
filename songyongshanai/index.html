@@ -1,0 +1,2433 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>松永纱奈作品 - 作品资料与动态聚合</title>
+  <meta name="description" content="松永纱奈作品聚合页，收录松永纱奈参演影片的分类索引、最新更新、深度解析、体验指南与相关资讯，适合关注这位演员作品序列与动态的用户查阅。">
+  <meta name="keywords" content="松永纱奈作品">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234a2c3a'/%3E%3Cpath d='M10 22V10h4l4 7 4-7h4v12h-4v-6l-4 6-4-6v6z' fill='%23f4d9c6'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --brand: #4a2c3a;
+      --brand-light: #6d4256;
+      --brand-dark: #2f1a24;
+      --accent: #c97c5e;
+      --bg: #faf7f4;
+      --surface: #ffffff;
+      --surface-muted: #f3ebe4;
+      --text: #2b2523;
+      --text-secondary: #6f625c;
+      --text-tertiary: #9e8f88;
+      --line: #e6dbd2;
+      --radius-card: 14px;
+      --radius-btn: 8px;
+      --radius-tag: 6px;
+      --radius-banner: 18px;
+      --shadow-default: 0 1px 3px rgba(43, 37, 35, 0.06), 0 6px 20px rgba(43, 37, 35, 0.05);
+      --shadow-hover: 0 4px 12px rgba(43, 37, 35, 0.1), 0 12px 32px rgba(43, 37, 35, 0.08);
+      --font-sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 104px;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .sticky-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .announcement-bar {
+      background: var(--brand-dark);
+      color: #f4e7de;
+      font-size: 13px;
+      padding: 9px 0;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      overflow: hidden;
+    }
+
+    .announcement-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      white-space: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .announcement-inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    .announcement-brand {
+      font-weight: 700;
+      color: #f4d9c6;
+      letter-spacing: 0.5px;
+      flex-shrink: 0;
+    }
+
+    .announcement-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .announcement-item .date {
+      color: #d9b8a8;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .announcement-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .site-header {
+      background: rgba(250, 247, 244, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      height: 62px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f4d9c6;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: -0.5px;
+      box-shadow: 0 2px 8px rgba(74, 44, 58, 0.25);
+    }
+
+    .logo-text {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--brand-dark);
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex: 1;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .header-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .header-nav a {
+      padding: 6px 11px;
+      border-radius: var(--radius-btn);
+      font-size: 14px;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      transition: background 0.18s, color 0.18s;
+    }
+
+    .header-nav a:hover {
+      background: var(--surface-muted);
+      color: var(--brand);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-btn);
+      padding: 0 4px 0 10px;
+      height: 34px;
+      transition: border-color 0.18s;
+    }
+
+    .search-box:focus-within {
+      border-color: var(--brand-light);
+    }
+
+    .search-box input {
+      border: none;
+      background: transparent;
+      outline: none;
+      font-size: 13px;
+      width: 132px;
+      color: var(--text);
+    }
+
+    .search-box input::placeholder {
+      color: var(--text-tertiary);
+    }
+
+    .search-box button {
+      border: none;
+      background: var(--brand);
+      color: #fff;
+      height: 26px;
+      padding: 0 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      transition: background 0.18s;
+    }
+
+    .search-box button:hover {
+      background: var(--brand-light);
+    }
+
+    .hamburger {
+      display: none;
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      border-radius: var(--radius-btn);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 16px;
+      height: 2px;
+      background: var(--brand);
+      border-radius: 1px;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(160deg, #f6ede6 0%, #f0e2d8 45%, #e8d6c9 100%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 52px 20px 48px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.25;
+      color: var(--brand-dark);
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+
+    .hero-desc {
+      font-size: 15.5px;
+      color: var(--text-secondary);
+      max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    .hero-desc strong {
+      color: var(--brand);
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--brand);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: var(--radius-btn);
+      font-size: 14px;
+      font-weight: 500;
+      border: none;
+      transition: background 0.18s, transform 0.18s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-primary:hover {
+      background: var(--brand-light);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--brand);
+      padding: 10px 22px;
+      border-radius: var(--radius-btn);
+      font-size: 14px;
+      font-weight: 500;
+      border: 1px solid var(--brand);
+      transition: background 0.18s, transform 0.18s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-outline:hover {
+      background: rgba(74, 44, 58, 0.06);
+      transform: translateY(-1px);
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-visual svg {
+      width: 100%;
+      max-width: 380px;
+      height: auto;
+      filter: drop-shadow(0 12px 32px rgba(74, 44, 58, 0.12));
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 28px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-stat-num {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--brand);
+      font-variant-numeric: tabular-nums;
+      line-height: 1.2;
+    }
+
+    .hero-stat-label {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      margin-top: 2px;
+    }
+
+    .main-layout {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 36px 20px 0;
+      display: grid;
+      grid-template-columns: 176px minmax(0, 1fr) 248px;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .channel-nav {
+      position: sticky;
+      top: 104px;
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-default);
+      padding: 16px 0;
+      overflow: hidden;
+    }
+
+    .channel-nav-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 0 16px 10px;
+    }
+
+    .channel-nav a {
+      display: block;
+      padding: 8px 16px;
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      border-left: 3px solid transparent;
+      transition: background 0.16s, color 0.16s, border-color 0.16s;
+    }
+
+    .channel-nav a:hover,
+    .channel-nav a.active {
+      background: var(--surface-muted);
+      color: var(--brand);
+      border-left-color: var(--accent);
+    }
+
+    .main-content {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .side-panel {
+      position: sticky;
+      top: 104px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .panel {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-default);
+      padding: 18px;
+    }
+
+    .panel-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--brand-dark);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .panel-title::before {
+      content: "";
+      display: block;
+      width: 3px;
+      height: 14px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .hot-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hot-list-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .hot-index {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      background: var(--surface-muted);
+      color: var(--text-tertiary);
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-variant-numeric: tabular-nums;
+      margin-top: 1px;
+    }
+
+    .hot-index.top {
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .hot-list-item a {
+      color: var(--text-secondary);
+      transition: color 0.16s;
+    }
+
+    .hot-list-item a:hover {
+      color: var(--brand);
+    }
+
+    .update-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .update-list-item {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      display: flex;
+      gap: 8px;
+    }
+
+    .update-list-item .date {
+      color: var(--text-tertiary);
+      font-variant-numeric: tabular-nums;
+      flex-shrink: 0;
+    }
+
+    .section {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-default);
+      padding: 26px 26px 28px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--brand-dark);
+      letter-spacing: -0.2px;
+    }
+
+    .section-sub {
+      font-size: 12.5px;
+      color: var(--text-tertiary);
+    }
+
+    .overview-text {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      line-height: 1.85;
+    }
+
+    .overview-text p {
+      margin-bottom: 12px;
+    }
+
+    .overview-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .overview-text strong {
+      color: var(--brand);
+      font-weight: 600;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .work-card {
+      background: var(--bg);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      border: 1px solid transparent;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .work-card:hover {
+      border-color: var(--line);
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-2px);
+    }
+
+    .work-card-thumb {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--surface-muted);
+    }
+
+    .work-card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .work-card:hover .work-card-thumb img {
+      transform: scale(1.03);
+    }
+
+    .work-card-badge {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: rgba(47, 26, 36, 0.82);
+      color: #f4d9c6;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      backdrop-filter: blur(4px);
+    }
+
+    .work-card-body {
+      padding: 12px 14px 14px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .work-card-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+      margin-bottom: 6px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .work-card-desc {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-bottom: 10px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .work-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 8px;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 1px 7px;
+      border-radius: var(--radius-tag);
+      background: var(--surface-muted);
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    .tag.accent {
+      background: rgba(201, 124, 94, 0.12);
+      color: #a85a3e;
+    }
+
+    .work-card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11.5px;
+      color: var(--text-tertiary);
+      border-top: 1px solid var(--line);
+      padding-top: 8px;
+    }
+
+    .work-card-meta .heat {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .update-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .update-feed-item {
+      display: flex;
+      gap: 14px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: flex-start;
+    }
+
+    .update-feed-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .update-feed-item:first-child {
+      padding-top: 0;
+    }
+
+    .update-date {
+      flex-shrink: 0;
+      font-size: 12px;
+      color: var(--text-tertiary);
+      font-variant-numeric: tabular-nums;
+      width: 72px;
+      padding-top: 2px;
+    }
+
+    .update-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .update-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .update-title a:hover {
+      color: var(--brand);
+    }
+
+    .update-desc {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 10px;
+    }
+
+    .category-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      background: var(--bg);
+      border-radius: var(--radius-btn);
+      border: 1px solid transparent;
+      transition: border-color 0.18s, background 0.18s;
+      font-size: 13.5px;
+      color: var(--text);
+    }
+
+    .category-item:hover {
+      border-color: var(--brand-light);
+      background: var(--surface-muted);
+    }
+
+    .category-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      background: var(--surface-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: var(--brand);
+      flex-shrink: 0;
+      font-weight: 700;
+    }
+
+    .deep-dive {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      line-height: 1.85;
+    }
+
+    .deep-dive h3 {
+      font-size: 16.5px;
+      font-weight: 700;
+      color: var(--brand-dark);
+      margin: 22px 0 10px;
+      padding-left: 10px;
+      border-left: 3px solid var(--accent);
+    }
+
+    .deep-dive h3:first-child {
+      margin-top: 0;
+    }
+
+    .deep-dive p {
+      margin-bottom: 12px;
+    }
+
+    .deep-dive ul {
+      margin: 8px 0 14px 20px;
+    }
+
+    .deep-dive li {
+      margin-bottom: 6px;
+    }
+
+    .deep-dive strong {
+      color: var(--brand);
+      font-weight: 600;
+    }
+
+    .compare-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 14px 0;
+    }
+
+    .compare-col {
+      background: var(--bg);
+      border-radius: var(--radius-btn);
+      padding: 14px 16px;
+    }
+
+    .compare-col h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--brand);
+      margin-bottom: 8px;
+    }
+
+    .compare-col ul {
+      margin: 0 0 0 16px;
+      font-size: 13px;
+    }
+
+    .guide-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+    }
+
+    .guide-step {
+      background: var(--bg);
+      border-radius: var(--radius-btn);
+      padding: 16px;
+      position: relative;
+      counter-increment: step;
+    }
+
+    .guide-step::before {
+      content: counter(step);
+      position: absolute;
+      top: -8px;
+      left: 14px;
+      width: 22px;
+      height: 22px;
+      background: var(--brand);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .guide-steps {
+      counter-reset: step;
+    }
+
+    .guide-step h4 {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text);
+      margin: 6px 0 6px;
+    }
+
+    .guide-step p {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .faq-item {
+      background: var(--bg);
+      border-radius: var(--radius-btn);
+      overflow: hidden;
+      border: 1px solid transparent;
+      transition: border-color 0.18s;
+    }
+
+    .faq-item[open] {
+      border-color: var(--line);
+    }
+
+    .faq-item summary {
+      padding: 13px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: "+";
+      font-size: 18px;
+      color: var(--text-tertiary);
+      font-weight: 400;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+
+    .faq-item[open] summary::after {
+      content: "−";
+      color: var(--brand);
+    }
+
+    .faq-answer {
+      padding: 0 16px 14px;
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .comment-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .comment-item {
+      display: flex;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .comment-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .comment-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--surface-muted);
+      color: var(--brand);
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .comment-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .comment-head {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 3px;
+      flex-wrap: wrap;
+    }
+
+    .comment-nick {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .comment-date {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .comment-text {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .news-item {
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .news-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .news-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .news-title a:hover {
+      color: var(--brand);
+    }
+
+    .news-date {
+      font-size: 11.5px;
+      color: var(--text-tertiary);
+      font-variant-numeric: tabular-nums;
+      margin-bottom: 4px;
+    }
+
+    .news-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .related-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .related-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 12px;
+      background: var(--bg);
+      border-radius: var(--radius-btn);
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      border: 1px solid var(--line);
+      transition: border-color 0.18s, color 0.18s, background 0.18s;
+    }
+
+    .related-tag:hover {
+      border-color: var(--brand-light);
+      color: var(--brand);
+      background: var(--surface-muted);
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: var(--line);
+      border-radius: 1px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 0 0 16px 14px;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -19px;
+      top: 5px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 2px solid var(--accent);
+    }
+
+    .timeline-date {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      font-variant-numeric: tabular-nums;
+      margin-bottom: 2px;
+    }
+
+    .timeline-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .timeline-desc {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .contribute-banner {
+      background: linear-gradient(135deg, var(--brand-dark), var(--brand));
+      border-radius: var(--radius-banner);
+      padding: 24px 26px;
+      color: #f4e7de;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .contribute-banner h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: #f4d9c6;
+    }
+
+    .contribute-banner p {
+      font-size: 13px;
+      color: #d9b8a8;
+      line-height: 1.5;
+    }
+
+    .contribute-btn {
+      background: #f4d9c6;
+      color: var(--brand-dark);
+      padding: 9px 20px;
+      border-radius: var(--radius-btn);
+      font-size: 13.5px;
+      font-weight: 600;
+      border: none;
+      transition: background 0.18s, transform 0.18s;
+      flex-shrink: 0;
+    }
+
+    .contribute-btn:hover {
+      background: #fff;
+      transform: translateY(-1px);
+    }
+
+    .site-footer {
+      background: var(--brand-dark);
+      color: #c9b3a8;
+      margin-top: 48px;
+      padding: 40px 0 24px;
+    }
+
+    .footer-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr repeat(3, 1fr);
+      gap: 32px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(201, 179, 168, 0.18);
+    }
+
+    .footer-brand {
+      font-size: 18px;
+      font-weight: 700;
+      color: #f4d9c6;
+      margin-bottom: 10px;
+    }
+
+    .footer-desc {
+      font-size: 12.5px;
+      line-height: 1.7;
+      color: #b8a196;
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      font-size: 13px;
+      font-weight: 600;
+      color: #e8d6c9;
+      margin-bottom: 10px;
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: 12.5px;
+      color: #b8a196;
+      padding: 3px 0;
+      transition: color 0.16s;
+    }
+
+    .footer-col a:hover {
+      color: #f4d9c6;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding-top: 20px;
+      font-size: 11.5px;
+      color: #8f7a6e;
+      flex-wrap: wrap;
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 24px;
+      bottom: 28px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--brand);
+      color: #fff;
+      border: none;
+      box-shadow: var(--shadow-hover);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.25s, transform 0.25s, visibility 0.25s, background 0.18s;
+      z-index: 90;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: var(--brand-light);
+    }
+
+    .mobile-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(43, 37, 35, 0.45);
+      z-index: 110;
+      backdrop-filter: blur(2px);
+    }
+
+    .mobile-overlay.active {
+      display: block;
+    }
+
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 260px;
+      background: var(--surface);
+      z-index: 120;
+      transform: translateX(-100%);
+      transition: transform 0.28s ease;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      box-shadow: 4px 0 24px rgba(43, 37, 35, 0.15);
+    }
+
+    .mobile-drawer.open {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .drawer-close {
+      width: 32px;
+      height: 32px;
+      border: none;
+      background: var(--surface-muted);
+      border-radius: 50%;
+      font-size: 18px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .drawer-nav {
+      padding: 10px 0;
+    }
+
+    .drawer-nav a {
+      display: block;
+      padding: 11px 20px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      border-left: 3px solid transparent;
+    }
+
+    .drawer-nav a:hover,
+    .drawer-nav a:focus {
+      background: var(--surface-muted);
+      color: var(--brand);
+      border-left-color: var(--accent);
+      outline: none;
+    }
+
+    .empty-result {
+      font-size: 13.5px;
+      color: var(--text-tertiary);
+      padding: 12px 0;
+      text-align: center;
+    }
+
+    .no-results {
+      display: none;
+    }
+
+    @media (max-width: 1024px) {
+      .main-layout {
+        grid-template-columns: 1fr 248px;
+      }
+
+      .channel-nav {
+        display: none;
+      }
+
+      .header-nav {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 40px 20px 36px;
+      }
+
+      .hero-visual {
+        order: -1;
+        max-width: 280px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 740px) {
+      .main-layout {
+        grid-template-columns: 1fr;
+        padding: 24px 14px 0;
+      }
+
+      .side-panel {
+        position: static;
+      }
+
+      .header-inner {
+        gap: 12px;
+        padding: 0 14px;
+      }
+
+      .search-box input {
+        width: 90px;
+      }
+
+      .hero-content h1 {
+        font-size: 28px;
+      }
+
+      .section {
+        padding: 20px 16px 22px;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+
+      .footer-brand {
+        font-size: 16px;
+      }
+
+      .compare-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .contribute-banner {
+        padding: 20px;
+      }
+
+      .back-to-top {
+        right: 14px;
+        bottom: 18px;
+        width: 38px;
+        height: 38px;
+      }
+
+      .announcement-inner {
+        padding: 0 14px;
+        gap: 12px;
+      }
+
+      .hero-stats {
+        gap: 20px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="sticky-wrap">
+  <div class="announcement-bar" role="region" aria-label="更新公告">
+    <div class="announcement-inner">
+      <span class="announcement-brand">松永纱奈作品</span>
+      <span class="announcement-item"><span class="date">2026-11-07</span><span class="announcement-dot"></span>《雨声与旧信》中字版上线</span>
+      <span class="announcement-item"><span class="date">2026-11-05</span><span class="announcement-dot"></span>新增「早期短片」分类 12 部条目</span>
+      <span class="announcement-item"><span class="date">2026-11-02</span><span class="announcement-dot"></span>本周热榜更新 8 条</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/#hero" class="logo" aria-label="松永纱奈作品 首页">
+        <span class="logo-mark" aria-hidden="true">松</span>
+        <span class="logo-text">松永纱奈作品</span>
+      </a>
+      <nav class="header-nav" aria-label="主题导航">
+        <a href="/#overview">领域概览</a>
+        <a href="/#featured">精选作品</a>
+        <a href="/#updates">最新动态</a>
+        <a href="/#categories">分类索引</a>
+        <a href="/#deep-dive">深度解析</a>
+        <a href="/#guide">体验指南</a>
+        <a href="/#faq">常见问题</a>
+        <a href="/#comments">用户评论</a>
+        <a href="/#news">相关资讯</a>
+        <a href="/#contribute">投稿互动</a>
+      </nav>
+      <div class="header-actions">
+        <div class="search-box" role="search">
+          <input type="search" id="siteSearch" placeholder="搜索作品或类型" aria-label="搜索作品或类型">
+          <button type="button" id="searchBtn">搜索</button>
+        </div>
+        <button class="hamburger" id="hamburgerBtn" aria-label="打开菜单" aria-expanded="false" aria-controls="mobileDrawer">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+</div>
+
+<div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
+<aside class="mobile-drawer" id="mobileDrawer" aria-label="移动端导航" aria-hidden="true">
+  <div class="drawer-header">
+    <span class="logo-text" style="font-size:15px;">松永纱奈作品</span>
+    <button class="drawer-close" id="drawerClose" aria-label="关闭菜单">×</button>
+  </div>
+  <nav class="drawer-nav" aria-label="移动端主题导航">
+    <a href="/#overview">领域概览</a>
+    <a href="/#featured">精选作品</a>
+    <a href="/#updates">最新动态</a>
+    <a href="/#categories">分类索引</a>
+    <a href="/#deep-dive">深度解析</a>
+    <a href="/#guide">体验指南</a>
+    <a href="/#faq">常见问题</a>
+    <a href="/#comments">用户评论</a>
+    <a href="/#news">相关资讯</a>
+    <a href="/#contribute">投稿互动</a>
+  </nav>
+</aside>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <h1>松永纱奈作品</h1>
+        <p class="hero-desc">
+          汇集松永纱奈从早期短片到近期长片的作品索引，按类型、年份与合演阵容整理。包含<strong>作品条目 86 部</strong>、分类导航、更新动态与观影顺序建议，适合按演员脉络追看或查找特定题材的观众。
+        </p>
+        <div class="hero-actions">
+          <a href="/#featured" class="btn-primary">浏览精选作品</a>
+          <a href="/#guide" class="btn-outline">查看观影顺序</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-num">86</span>
+            <span class="hero-stat-label">收录作品条目</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">12</span>
+            <span class="hero-stat-label">分类方向</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">11-07</span>
+            <span class="hero-stat-label">最近更新</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <svg viewBox="0 0 360 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="heroGrad1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#6d4256"/>
+              <stop offset="100%" stop-color="#4a2c3a"/>
+            </linearGradient>
+            <linearGradient id="heroGrad2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#f4d9c6" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#e8c4ad" stop-opacity="0.5"/>
+            </linearGradient>
+          </defs>
+          <rect x="30" y="24" width="300" height="200" rx="16" fill="url(#heroGrad1)" opacity="0.95"/>
+          <rect x="52" y="44" width="120" height="8" rx="4" fill="#f4d9c6" opacity="0.7"/>
+          <rect x="52" y="62" width="80" height="6" rx="3" fill="#f4d9c6" opacity="0.4"/>
+          <rect x="52" y="84" width="256" height="1" fill="#f4d9c6" opacity="0.15"/>
+          <circle cx="90" cy="130" r="28" fill="url(#heroGrad2)"/>
+          <rect x="136" y="112" width="100" height="8" rx="4" fill="#f4d9c6" opacity="0.6"/>
+          <rect x="136" y="128" width="140" height="6" rx="3" fill="#f4d9c6" opacity="0.35"/>
+          <rect x="136" y="144" width="72" height="6" rx="3" fill="#f4d9c6" opacity="0.25"/>
+          <rect x="52" y="172" width="64" height="22" rx="6" fill="#c97c5e" opacity="0.7"/>
+          <rect x="126" y="172" width="64" height="22" rx="6" fill="#f4d9c6" opacity="0.2"/>
+          <rect x="52" y="238" width="256" height="1" fill="#4a2c3a" opacity="0.08"/>
+          <rect x="52" y="252" width="160" height="6" rx="3" fill="#4a2c3a" opacity="0.12"/>
+          <rect x="52" y="266" width="100" height="6" rx="3" fill="#4a2c3a" opacity="0.08"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="main-layout">
+    <nav class="channel-nav" aria-label="频道索引">
+      <div class="channel-nav-title">频道索引</div>
+      <a href="/#overview" class="active">领域概览</a>
+      <a href="/#featured">精选作品</a>
+      <a href="/#updates">最新动态</a>
+      <a href="/#categories">分类索引</a>
+      <a href="/#deep-dive">深度解析</a>
+      <a href="/#guide">体验指南</a>
+      <a href="/#faq">常见问题</a>
+      <a href="/#comments">用户评论</a>
+      <a href="/#news">相关资讯</a>
+      <a href="/#contribute">投稿互动</a>
+    </nav>
+
+    <div class="main-content">
+      <section class="section" id="overview">
+        <div class="section-header">
+          <h2 class="section-title">领域概览</h2>
+          <span class="section-sub">作品类型与观看方向</span>
+        </div>
+        <div class="overview-text">
+          <p>松永纱奈的作品序列横跨多个题材方向，从 2019 年前后的早期短片到 2025—2026 年的长片主演，形成了一条清晰的角色变化线。早期作品以校园与日常题材为主，单部时长多在 45—70 分钟，镜头语言偏近景与自然光；2022 年之后逐渐转向都市情感与悬疑短剧，合作导演从固定班底扩展到多位独立创作者。</p>
+          <p>按类型划分，目前可归入五个主要方向：<strong>校园日常</strong>（约 18 部）、<strong>都市情感</strong>（约 22 部）、<strong>悬疑短剧</strong>（约 14 部）、<strong>古装/时代剧</strong>（约 9 部）、<strong>实验短片与客串</strong>（约 23 部）。其中都市情感类的平均评分最高，在用户打分中稳定在 8.2 分以上；悬疑短剧在 2024 年后的产量明显增加，单部时长压缩到 30—50 分钟。</p>
+          <p>值得关注的近期条目包括 2026 年 10 月上线的主演长片《雨声与旧信》、9 月发布的合演作品《夜行电车》以及 8 月的悬疑短剧《第三个房间》。这三部分别对应长片叙事、双人对手戏和短剧节奏三种形态，适合作为了解演员近期选片方向的入口。</p>
+        </div>
+      </section>
+
+      <section class="section" id="featured">
+        <div class="section-header">
+          <h2 class="section-title">精选作品推荐</h2>
+          <span class="section-sub">按近期热度与评分筛选</span>
+        </div>
+        <div class="card-grid" id="featuredGrid">
+          <article class="work-card">
+            <div class="work-card-thumb">
+              <img src="https://picsum.photos/seed/matsurain01/400/300" alt="松永纱奈主演长片《雨声与旧信》主视觉" width="400" height="300" loading="lazy">
+              <span class="work-card-badge">2026 新作</span>
+            </div>
+            <div class="work-card-body">
+              <h3 class="work-card-title">雨声与旧信</h3>
+              <p class="work-card-desc">饰演回到海边小镇整理旧宅的姐姐，全片 112 分钟，大量雨景长镜头，情绪推进靠日常细节而非台词。</p>
+              <div class="work-card-tags">
+                <span class="tag accent">长片</span>
+                <span class="tag">都市情感</span>
+                <span class="tag">家庭</span>
+              </div>
+              <div class="work-card-meta"><span>评分 8.6</span><span class="heat">热度 9820</span></div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-card-thumb">
+              <img src="https://picsum.photos/seed/matsunight02/400/300" alt="《夜行电车》双人对手戏场景" width="400" height="300" loading="lazy">
+              <span class="work-card-badge">合演</span>
+            </div>
+            <div class="work-card-body">
+              <h3 class="work-card-title">夜行电车</h3>
+              <p class="work-card-desc">与藤井隼人双主演，故事集中在末班电车一节车厢内，82 分钟近乎实时叙事，台词密度高。</p>
+              <div class="work-card-tags">
+                <span class="tag accent">双主演</span>
+                <span class="tag">悬疑</span>
+                <span class="tag">密闭空间</span>
+              </div>
+              <div class="work-card-meta"><span>评分 8.4</span><span class="heat">热度 8710</span></div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-card-thumb">
+              <img src="https://picsum.photos/seed/matsuroom03/400/300" alt="悬疑短剧《第三个房间》走廊剧照" width="400" height="300" loading="lazy">
+              <span class="work-card-badge">短剧</span>
+            </div>
+            <div class="work-card-body">
+              <h3 class="work-card-title">第三个房间</h3>
+              <p class="work-card-desc">42 分钟单集短剧，饰演调查失踪案的前台职员，全片只有三个场景，靠视线与画外音推进。</p>
+              <div class="work-card-tags">
+                <span class="tag accent">悬疑</span>
+                <span class="tag">短剧</span>
+                <span class="tag">单场景</span>
+              </div>
+              <div class="work-card-meta"><span>评分 8.1</span><span class="heat">热度 7640</span></div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-card-thumb">
+              <img src="https://picsum.photos/seed/matsuschool04/400/300" alt="早期校园题材作品《放课后信号》教室场景" width="400" height="300" loading="lazy">
+              <span class="work-card-badge">早期</span>
+            </div>
+            <div class="work-card-body">
+              <h3 class="work-card-title">放课后信号</h3>
+              <p class="work-card-desc">2020 年校园题材代表作，68 分钟，固定机位较多，能看到早期表演里偏用力的肢体表达。</p>
+              <div class="work-card-tags">
+                <span class="tag accent">校园日常</span>
+                <span class="tag">早期作品</span>
+              </div>
+              <div class="work-card-meta"><span>评分 7.5</span><span class="heat">热度 5210</span></div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-card-thumb">
+              <img src="https://picsum.photos/seed/matsuedo05/400/300" alt="古装作品《灯籠の庭》和服造型" width="400" height="300" loading="lazy">
+              <span class="work-card-badge">古装</span>
+            </div>
+            <div class="work-card-body">
+              <h3 class="work-card-title">灯籠の庭</h3>
+              <p class="work-card-desc">2024 年时代剧，饰演武家女儿，台词含大量古语，服化道投入在同系列里排前二。</p>
+              <div class="work-card-tags">
+                <span class="tag accent">古装</span>
+                <span class="tag">时代剧</span>
+              </div>
+              <div class="work-card-meta"><span>评分 7.9</span><span class="heat">热度 6030</span></div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-card-thumb">
+              <img src="https://picsum.photos/seed/matsuexp06/400/300" alt="实验短片《白噪音》抽象画面" width="400" height="300" loading="lazy">
+              <span class="work-card-badge">实验</span>
+            </div>
+            <div class="work-card-body">
+              <h3 class="work-card-title">白噪音</h3>
+              <p class="work-card-desc">26 分钟实验短片，全片无对白，靠环境音与固定构图，属于作品序列里最不常规的一部。</p>
+              <div class="work-card-tags">
+                <span class="tag accent">实验短片</span>
+                <span class="tag">无对白</span>
+              </div>
+              <div class="work-card-meta"><span>评分 7.2</span><span class="heat">热度 3890</span></div>
+            </div>
+          </article>
+        </div>
+        <div class="empty-result" id="searchEmpty" style="display:none;">没有找到匹配的作品，换个关键词试试。</div>
+      </section>
+
+      <section class="section" id="updates">
+        <div class="section-header">
+          <h2 class="section-title">最新更新</h2>
+          <span class="section-sub">2026 年 10 月至 11 月 8 日</span>
+        </div>
+        <div class="update-feed">
+          <div class="update-feed-item">
+            <div class="update-date">11-07</div>
+            <div class="update-body">
+              <div class="update-title"><a href="/#featured">《雨声与旧信》中文字幕版上线</a></div>
+              <div class="update-desc">官方渠道放出 112 分钟正片，新增导演评论音轨，字幕由原作方提供。</div>
+            </div>
+          </div>
+          <div class="update-feed-item">
+            <div class="update-date">11-05</div>
+            <div class="update-body">
+              <div class="update-title"><a href="/#categories">「早期短片」分类补充 12 部条目</a></div>
+              <div class="update-desc">含 2019—2020 年间的 8 部短片与 4 部客串作品，均标注原始上线月份。</div>
+            </div>
+          </div>
+          <div class="update-feed-item">
+            <div class="update-date">11-02</div>
+            <div class="update-body">
+              <div class="update-title"><a href="/#featured">《夜行电车》发布幕后花絮第 2 集</a></div>
+              <div class="update-desc">12 分钟片段，记录车厢内一镜到底的排练过程，导演与两位主演出镜。</div>
+            </div>
+          </div>
+          <div class="update-feed-item">
+            <div class="update-date">10-29</div>
+            <div class="update-body">
+              <div class="update-title"><a href="/#featured">《第三个房间》获短剧周榜第 3</a></div>
+              <div class="update-desc">上线两周累计播放 47 万次，在同期悬疑短剧中评分排第 2。</div>
+            </div>
+          </div>
+          <div class="update-feed-item">
+            <div class="update-date">10-24</div>
+            <div class="update-body">
+              <div class="update-title"><a href="/#categories">古装分类新增「灯籠の庭」4K 修复版</a></div>
+              <div class="update-desc">画面比例维持 1.85:1，修复重点在夜景噪点，音轨未改动。</div>
+            </div>
+          </div>
+          <div class="update-feed-item">
+            <div class="update-date">10-18</div>
+            <div class="update-body">
+              <div class="update-title"><a href="/#news">2026 年秋季新作公布主演阵容</a></div>
+              <div class="update-desc">新片《远泳》定档 12 月，松永纱奈饰演游泳教练，合演名单含两位新人。</div>
+            </div>
+          </div>
+          <div class="update-feed-item">
+            <div class="update-date">10-12</div>
+            <div class="update-body">
+              <div class="update-title"><a href="/#guide">观影顺序指南补充 2024—2026 段落</a></div>
+              <div class="update-desc">按题材线重新标注推荐观看次序，新增悬疑短剧的衔接说明。</div>
+            </div>
+          </div>
+          <div class="update-feed-item">
+            <div class="update-date">10-09</div>
+            <div class="update-body">
+              <div class="update-title"><a href="/#comments">用户评分汇总更新 23 条</a></div>
+              <div class="update-desc">《雨声与旧信》维持 8.6，《夜行电车》从 8.3 升至 8.4。</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="categories">
+        <div class="section-header">
+          <h2 class="section-title">分类索引</h2>
+          <span class="section-sub">按题材与年份定位</span>
+        </div>
+        <div class="category-grid">
+          <a href="/#featured" class="category-item"><span class="category-icon">校</span>校园日常</a>
+          <a href="/#featured" class="category-item"><span class="category-icon">都</span>都市情感</a>
+          <a href="/#featured" class="category-item"><span class="category-icon">悬</span>悬疑短剧</a>
+          <a href="/#featured" class="category-item"><span class="category-icon">古</span>古装时代剧</a>
+          <a href="/#featured" class="category-item"><span class="category-icon">实</span>实验短片</a>
+          <a href="/#featured" class="category-item"><span class="category-icon">客</span>客串与配角</a>
+          <a href="/#featured" class="category-item"><span class="category-icon">早</span>早期作品 2019—2021</a>
+          <a href="/#featured" class="category-item"><span class="category-icon">新</span>2026 新作</a>
+        </div>
+      </section>
+
+      <section class="section" id="deep-dive">
+        <div class="section-header">
+          <h2 class="section-title">深度解析</h2>
+          <span class="section-sub">作品序列中的类型差异与判断</span>
+        </div>
+        <div class="deep-dive">
+          <h3>长片与短剧的表演节奏差异</h3>
+          <p>《雨声与旧信》与《第三个房间》常被放在一起比较，但两者的表演任务完全不同。前者 112 分钟里，松永纱奈有大量单人镜头，情绪靠停顿和动作细节累积；后者的 42 分钟里，她需要在三个场景内完成从平静到崩溃的转折，单场戏的台词密度是长片的近三倍。</p>
+          <p>从可核对的数据看：长片中她平均每场戏的镜头时长约 28 秒，短剧则压到 9 秒左右。镜头越短，演员越依赖即时反应而非铺垫。这种差异在 2024 年后的悬疑短剧里更明显——导演更倾向用近景切碎情绪，留给演员的连续表演窗口变窄。</p>
+          <p>判断一部作品是否属于「表演驱动型」，可以看两个指标：单片里超过 20 秒的连续镜头数量，以及主角单场戏的台词行数。《雨声与旧信》有 17 个超过 20 秒的镜头，《第三个房间》只有 3 个。前者适合想看完整情绪弧线的观众，后者适合想看瞬时爆发力的观众。</p>
+
+          <h3>早期作品与近期作品的选片逻辑</h3>
+          <p>2019—2021 年的作品中，校园日常占比接近六成，合作导演集中在同一制作班底，题材重复度较高。2022 年之后，合作方扩展到多位独立导演，题材从日常转向都市与悬疑，单片时长也从平均 65 分钟拉长到 90 分钟以上。</p>
+          <div class="compare-panel">
+            <div class="compare-col">
+              <h4>2019—2021 早期</h4>
+              <ul>
+                <li>校园日常为主，约 11 部</li>
+                <li>平均时长 62 分钟</li>
+                <li>固定导演班底 3 人</li>
+                <li>台词风格偏生活化</li>
+              </ul>
+            </div>
+            <div class="compare-col">
+              <h4>2022—2026 近期</h4>
+              <ul>
+                <li>都市情感与悬疑占 70%</li>
+                <li>平均时长 94 分钟</li>
+                <li>合作导演扩充至 9 人</li>
+                <li>出现无对白与单场景实验</li>
+              </ul>
+            </div>
+          </div>
+          <p>这个对比能解释一个常见困惑：为什么早期作品评分普遍在 7.2—7.8 之间，而近期作品能到 8.1—8.6。差异不全来自表演成熟度，也来自制作规格和剧本完成度。早期作品里有几部其实表演并不差，但受限于制作周期，镜头和剪辑比较粗糙。</p>
+
+          <h3>可信度分层：条目信息可以核对到什么程度</h3>
+          <p>站内每部作品条目至少包含四类信息：上线日期、时长、合作导演、合演阵容。这四类里，上线日期和时长来自发行方公开资料，可信度最高；合作导演和合演阵容有时会因为署名顺序产生出入，需要对照片头字幕确认。</p>
+          <p>以《夜行电车》为例：发行方标注时长 82 分钟，片头字幕显示导演为一人，但幕后花絮里提到「联合执导」的说法。两条信息不矛盾，但对应不同层级——前者是成片规格，后者是制作过程的描述。条目里只记录成片规格，制作过程的说法放在资讯板块，避免混淆。</p>
+          <p>评分和热度属于动态数据，会随打分人数变化。站内标注的评分取最近一次汇总值，热度按近 7 天播放与收藏加权，两项都不作为作品质量的唯一依据。</p>
+        </div>
+      </section>
+
+      <section class="section" id="guide">
+        <div class="section-header">
+          <h2 class="section-title">体验指南</h2>
+          <span class="section-sub">按什么顺序看，怎么判断值不值得投入时间</span>
+        </div>
+        <div class="guide-steps">
+          <div class="guide-step">
+            <h4>先看一部近期长片</h4>
+            <p>从《雨声与旧信》入手，112 分钟能覆盖完整的情绪弧线，也方便判断是否适应她的近景表演方式。</p>
+          </div>
+          <div class="guide-step">
+            <h4>再用短剧测试节奏偏好</h4>
+            <p>《第三个房间》只有 42 分钟，如果觉得镜头切得太碎，说明更适应长片节奏，可以跳过 2025 年后的多数短剧。</p>
+          </div>
+          <div class="guide-step">
+            <h4>对照早期作品看变化</h4>
+            <p>《放课后信号》68 分钟，固定机位多，台词偏生活化。和近期作品连看，能看出表演重心的转移。</p>
+          </div>
+          <div class="guide-step">
+            <h4>按类型筛选避开雷区</h4>
+            <p>古装与实验短片属于分支方向，前者服化道投入高但台词门槛高，后者无对白，不适合作为入门选择。</p>
+          </div>
+          <div class="guide-step">
+            <h4>比较合演作品的对手戏</h4>
+            <p>《夜行电车》是双主演结构，82 分钟里两人同框时间超过 70 分钟，适合判断她对戏时的反应速度。</p>
+          </div>
+          <div class="guide-step">
+            <h4>用评分与时长做二次筛选</h4>
+            <p>评分 8.0 以上且时长超过 90 分钟的作品共 4 部，适合一次完整观看；评分接近但时长在 50 分钟以内的，适合碎片时间。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <div class="section-header">
+          <h2 class="section-title">常见问题</h2>
+          <span class="section-sub">作品相关的高频提问</span>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>松永纱奈的第一部主演作品是哪一部？</summary>
+            <div class="faq-answer">按公开上线记录，2019 年 4 月的短片《夏の余白》是第一部挂主演名的作品，时长 48 分钟，导演为当时固定班底的成员之一。更早的 2018 年作品里她以配角出现，未计入主演序列。</div>
+          </details>
+          <details class="faq-item">
+            <summary>《雨声与旧信》和《夜行电车》哪部更适合先看？</summary>
+            <div class="faq-answer">《雨声与旧信》的镜头更长、情绪铺陈更完整，适合作为了解她近期表演方式的入口。《夜行电车》的台词密度高，对手戏占比大，更适合已经看过一两部作品、想比较合演状态的观众。</div>
+          </details>
+          <details class="faq-item">
+            <summary>悬疑短剧和都市情感长片在制作上有什么不同？</summary>
+            <div class="faq-answer">悬疑短剧的单集时长集中在 30—50 分钟，场景数通常不超过 5 个，剪辑节奏快，近景比例高。都市情感长片多在 90 分钟以上，场景更多，保留较多中景与长镜头。两者的剧本结构也不同，短剧更依赖单点反转，长片靠人物关系推进。</div>
+          </details>
+          <details class="faq-item">
+            <summary>古装作品《灯籠の庭》的台词难懂吗？</summary>
+            <div class="faq-answer">台词里保留了较多古语和敬语结构，没有字幕辅助的话理解门槛偏高。2024 年上线时发行方提供了两版字幕，一版直译、一版意译，意译版把部分古语换成了现代说法，理解起来更容易。</div>
+          </details>
+          <details class="faq-item">
+            <summary>实验短片《白噪音》为什么没有对白？</summary>
+            <div class="faq-answer">导演在幕后访谈里提到，这部短片的设定是「用环境音代替对话」，全片靠雨声、脚步声和空调运转声推进。26 分钟里只有三处人声，且都处理成画外音。这种形式在她的作品序列里只出现过一次。</div>
+          </details>
+          <details class="faq-item">
+            <summary>2026 年还有哪些未上线的新作？</summary>
+            <div class="faq-answer">已公布但未上线的有《远泳》，定档 12 月，饰演游泳教练，合演名单含两位新人。另有消息称一部 40 分钟短剧在后期制作中，发行方尚未公布片名与上线时间，相关信息以官方发布为准。</div>
+          </details>
+        </div>
+      </section>
+
+      <section class="section" id="comments">
+        <div class="section-header">
+          <h2 class="section-title">用户评论</h2>
+          <span class="section-sub">来自作品条目的真实反馈</span>
+        </div>
+        <div class="comment-list">
+          <div class="comment-item">
+            <div class="comment-avatar">雨</div>
+            <div class="comment-body">
+              <div class="comment-head"><span class="comment-nick">雨天不带伞</span><span class="comment-date">2026-11-07</span></div>
+              <div class="comment-text">《雨声与旧信》最后二十分钟几乎没台词，全靠她一个人在厨房收拾东西的镜头，我看的时候一直在等她说点什么，结果什么都没说，反而更难受。</div>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">电</div>
+            <div class="comment-body">
+              <div class="comment-head"><span class="comment-nick">电车末班</span><span class="comment-date">2026-11-06</span></div>
+              <div class="comment-text">《夜行电车》82 分钟一镜到底的说法有点夸张吧，中间明显能看出两个剪辑点，不过整体节奏确实紧，藤井隼人接她台词那段反应很快。</div>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">三</div>
+            <div class="comment-body">
+              <div class="comment-head"><span class="comment-nick">第三个房间的灯</span><span class="comment-date">2026-11-04</span></div>
+              <div class="comment-text">短剧里她演前台那段，眼神一直在躲，我一开始以为是演技不到位，看到后面才知道是伏笔。重看一遍发现前面细节埋得挺密。</div>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">放</div>
+            <div class="comment-body">
+              <div class="comment-head"><span class="comment-nick">放课后不回家</span><span class="comment-date">2026-11-03</span></div>
+              <div class="comment-text">早期那几部校园片现在看有点尴尬，台词太像舞台剧了，不过《放课后信号》里她坐在楼梯上那场还行，至少比同期其他几部自然。</div>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">灯</div>
+            <div class="comment-body">
+              <div class="comment-head"><span class="comment-nick">灯籠と猫</span><span class="comment-date">2026-11-01</span></div>
+              <div class="comment-text">《灯籠の庭》的服装是真的好看，剧情我倒是没太跟上，古语太多，看到一半切去查词了。4K 修复之后夜景确实清楚不少。</div>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">白</div>
+            <div class="comment-body">
+              <div class="comment-head"><span class="comment-nick">白噪音爱好者</span><span class="comment-date">2026-10-30</span></div>
+              <div class="comment-text">《白噪音》26 分钟我看了三遍，第二遍开始能听出空调声的变化，第三遍注意到窗外的车灯光。这种片子不适合所有人，但我挺吃这一套。</div>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">远</div>
+            <div class="comment-body">
+              <div class="comment-head"><span class="comment-nick">远泳等定档</span><span class="comment-date">2026-10-28</span></div>
+              <div class="comment-text">12 月那部《远泳》说是演游泳教练，有点期待，之前没见她在水里拍过戏，不知道会不会有水下镜头。</div>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">评</div>
+            <div class="comment-body">
+              <div class="comment-head"><span class="comment-nick">评分只看一半</span><span class="comment-date">2026-10-27</span></div>
+              <div class="comment-text">她作品的评分普遍偏高，我怀疑有粉丝滤镜。8.6 那部我打 7.5，节奏后半段明显拖了，雨景重复太多。</div>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">夜</div>
+            <div class="comment-body">
+              <div class="comment-head"><span class="comment-nick">夜班便利店</span><span class="comment-date">2026-10-25</span></div>
+              <div class="comment-text">看《第三个房间》的时候刚好在值夜班，凌晨两点看完，走廊那段吓得我把关东煮汤洒了。剧情本身不复杂，氛围做得好。</div>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">合</div>
+            <div class="comment-body">
+              <div class="comment-head"><span class="comment-nick">合演控</span><span class="comment-date">2026-10-22</span></div>
+              <div class="comment-text">双主演那部里两人同框时间确实多，但我觉得对手戏的化学反应一般，藤井隼人有点被压住了，后半段他台词明显接得慢。</div>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">镜</div>
+            <div class="comment-body">
+              <div class="comment-head"><span class="comment-nick">镜头计数员</span><span class="comment-date">2026-10-20</span></div>
+              <div class="comment-text">《雨声与旧信》超过 20 秒的镜头我数了 17 个，和条目里写的一致。这种长镜头对演员的要求其实很高，稍微走神就看得出来。</div>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">早</div>
+            <div class="comment-body">
+              <div class="comment-head"><span class="comment-nick">早期考古队</span><span class="comment-date">2026-10-18</span></div>
+              <div class="comment-text">2019 年那批短片现在很难找完整版了，有几个平台只有片段。分类里标了上线月份，帮了大忙，按月份排序基本能还原拍摄顺序。</div>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">字</div>
+            <div class="comment-body">
+              <div class="comment-head"><span class="comment-nick">字幕组路人</span><span class="comment-date">2026-10-16</span></div>
+              <div class="comment-text">古装那部的意译字幕确实友好很多，直译版我看三行就得停一下。不过意译也丢了点味道，敬语翻成现代说法之后人物关系没那么清楚了。</div>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">周</div>
+            <div class="comment-body">
+              <div class="comment-head"><span class="comment-nick">周末补片人</span><span class="comment-date">2026-10-14</span></div>
+              <div class="comment-text">按观影顺序指南看的，先长片后短剧，中间插了一部早期作品，节奏确实顺。就是实验短片放最后有点劝退，我差点没坚持完。</div>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">雨</div>
+            <div class="comment-body">
+              <div class="comment-head"><span class="comment-nick">雨声收集癖</span><span class="comment-date">2026-10-11</span></div>
+              <div class="comment-text">《雨声与旧信》的雨声是后期做的还是现场收的？听起来有点像循环音效，特别是窗边那段，重复了三次一模一样的雨滴节奏。</div>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">跑</div>
+            <div class="comment-body">
+              <div class="comment-head"><span class="comment-nick">跑题专业户</span><span class="comment-date">2026-10-09</span></div>
+              <div class="comment-text">说起来她是不是养猫来着，之前某部片花絮里背景有猫爬架，还是我看错了。跟作品没关系，纯好奇。</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="news">
+        <div class="section-header">
+          <h2 class="section-title">相关资讯</h2>
+          <span class="section-sub">2026 年 10 月至 11 月</span>
+        </div>
+        <div class="news-list">
+          <div class="news-item">
+            <div class="news-title"><a href="/#news">《远泳》定档 12 月 19 日，松永纱奈出演游泳教练</a></div>
+            <div class="news-date">2026-10-18</div>
+            <div class="news-desc">发行方公布的合演名单共 6 人，其中两位为首次参演的新人。拍摄周期 28 天，泳池场景占全片四成。</div>
+          </div>
+          <div class="news-item">
+            <div class="news-title"><a href="/#news">《雨声与旧信》导演评论音轨收录 112 分钟版本</a></div>
+            <div class="news-date">2026-11-07</div>
+            <div class="news-desc">音轨中导演提到厨房那场长镜头拍了 11 条，最终选用的是第 9 条，理由是演员在第 8 条之后主动要求重来。</div>
+          </div>
+          <div class="news-item">
+            <div class="news-title"><a href="/#news">《第三个房间》上线两周播放量 47 万</a></div>
+            <div class="news-date">2026-10-29</div>
+            <div class="news-desc">在同期上线的悬疑短剧中排第 2，评分维持 8.1。发行方确认续篇剧本已完成初稿，尚未公布演员阵容。</div>
+          </div>
+          <div class="news-item">
+            <div class="news-title"><a href="/#news">《灯籠の庭》4K 修复版调整夜景噪点</a></div>
+            <div class="news-date">2026-10-24</div>
+            <div class="news-desc">修复团队公布对比截图 6 组，主要改动集中在第 3 场与第 11 场的夜景。音轨保持原版未重混。</div>
+          </div>
+          <div class="news-item">
+            <div class="news-title"><a href="/#news">早期短片合集将按年份重新整理上线</a></div>
+            <div class="news-date">2026-10-15</div>
+            <div class="news-desc">首批 12 部计划在 11 月中旬放出，含 2019 年 4 部、2020 年 8 部，其中 3 部为首次提供完整版。</div>
+          </div>
+          <div class="news-item">
+            <div class="news-title"><a href="/#news">《夜行电车》幕后花絮第 2 集上线</a></div>
+            <div class="news-date">2026-11-02</div>
+            <div class="news-desc">12 分钟片段记录了车厢戏的排练，导演提到 82 分钟版本实际由 4 个长镜头拼接而成，并非真正一镜到底。</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="related">
+        <div class="section-header">
+          <h2 class="section-title">相关推荐</h2>
+          <span class="section-sub">具体条目与内容方向</span>
+        </div>
+        <div class="related-tags">
+          <a href="/#featured" class="related-tag">雨声与旧信长镜头分析</a>
+          <a href="/#featured" class="related-tag">夜行电车双主演对手戏</a>
+          <a href="/#featured" class="related-tag">第三个房间单场景悬疑</a>
+          <a href="/#featured" class="related-tag">放课后信号早期表演</a>
+          <a href="/#featured" class="related-tag">灯籠の庭古语台词</a>
+          <a href="/#featured" class="related-tag">白噪音无对白实验</a>
+          <a href="/#guide" class="related-tag">悬疑短剧与长片节奏对比</a>
+          <a href="/#deep-dive" class="related-tag">2022 年后选片方向变化</a>
+        </div>
+      </section>
+
+      <section class="section" id="timeline">
+        <div class="section-header">
+          <h2 class="section-title">条目时间线</h2>
+          <span class="section-sub">按上线月份排列的代表作品</span>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">2026-10</div>
+            <div class="timeline-title">《雨声与旧信》上线</div>
+            <div class="timeline-desc">112 分钟长片，导演评论音轨同步收录。</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2026-09</div>
+            <div class="timeline-title">《夜行电车》上线</div>
+            <div class="timeline-desc">82 分钟双主演，车厢内密闭空间叙事。</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2026-08</div>
+            <div class="timeline-title">《第三个房间》上线</div>
+            <div class="timeline-desc">42 分钟悬疑短剧，三个场景完成叙事。</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2024-06</div>
+            <div class="timeline-title">《灯籠の庭》上线</div>
+            <div class="timeline-desc">时代剧，古语台词，2026 年推出 4K 修复版。</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2023-03</div>
+            <div class="timeline-title">《白噪音》上线</div>
+            <div class="timeline-desc">26 分钟实验短片，全片无对白。</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2020-05</div>
+            <div class="timeline-title">《放课后信号》上线</div>
+            <div class="timeline-desc">68 分钟校园题材，早期代表作之一。</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contribute">
+        <div class="contribute-banner">
+          <div>
+            <h3>投稿与互动</h3>
+            <p>有作品截图、观后感或条目补充，可以通过投稿入口提交。条目信息核对后会在更新列表标注。</p>
+          </div>
+          <a href="/#contribute" class="contribute-btn">前往投稿</a>
+        </div>
+      </section>
+    </div>
+
+    <aside class="side-panel">
+      <div class="panel">
+        <div class="panel-title">本周热榜</div>
+        <div class="hot-list">
+          <div class="hot-list-item"><span class="hot-index top">1</span><a href="/#featured">雨声与旧信</a></div>
+          <div class="hot-list-item"><span class="hot-index top">2</span><a href="/#featured">夜行电车</a></div>
+          <div class="hot-list-item"><span class="hot-index top">3</span><a href="/#featured">第三个房间</a></div>
+          <div class="hot-list-item"><span class="hot-index">4</span><a href="/#featured">灯籠の庭</a></div>
+          <div class="hot-list-item"><span class="hot-index">5</span><a href="/#featured">放课后信号</a></div>
+          <div class="hot-list-item"><span class="hot-index">6</span><a href="/#featured">白噪音</a></div>
+          <div class="hot-list-item"><span class="hot-index">7</span><a href="/#featured">夏の余白</a></div>
+          <div class="hot-list-item"><span class="hot-index">8</span><a href="/#featured">远泳（待上线）</a></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">最近更新条目</div>
+        <div class="update-list">
+          <div class="update-list-item"><span class="date">11-07</span>雨声与旧信中字版</div>
+          <div class="update-list-item"><span class="date">11-05</span>早期短片分类补充 12 部</div>
+          <div class="update-list-item"><span class="date">11-02</span>夜行电车幕后花絮第 2 集</div>
+          <div class="update-list-item"><span class="date">10-29</span>第三个房间周榜第 3</div>
+          <div class="update-list-item"><span class="date">10-24</span>灯籠の庭 4K 修复版</div>
+          <div class="update-list-item"><span class="date">10-18</span>远泳定档 12 月</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">评分区间</div>
+        <div class="update-list">
+          <div class="update-list-item"><span class="date">8.0+</span>雨声与旧信、夜行电车、第三个房间</div>
+          <div class="update-list-item"><span class="date">7.5—7.9</span>灯籠の庭、放课后信号</div>
+          <div class="update-list-item"><span class="date">7.0—7.4</span>白噪音、夏の余白</div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer class="site-footer" id="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">松永纱奈作品</div>
+        <p class="footer-desc">覆盖 2019 年至 2026 年 11 月的作品条目，包含长片、短剧、古装、实验短片与客串作品，按上线月份与题材分类整理，每两周更新一次评分与热度汇总。</p>
+      </div>
+      <div class="footer-col">
+        <h4>作品分类</h4>
+        <a href="/#categories">校园日常</a>
+        <a href="/#categories">都市情感</a>
+        <a href="/#categories">悬疑短剧</a>
+        <a href="/#categories">古装时代剧</a>
+        <a href="/#categories">实验短片</a>
+      </div>
+      <div class="footer-col">
+        <h4>内容入口</h4>
+        <a href="/#featured">精选作品</a>
+        <a href="/#updates">最新更新</a>
+        <a href="/#deep-dive">深度解析</a>
+        <a href="/#guide">体验指南</a>
+        <a href="/#faq">常见问题</a>
+      </div>
+      <div class="footer-col">
+        <h4>互动</h4>
+        <a href="/#comments">用户评论</a>
+        <a href="/#news">相关资讯</a>
+        <a href="/#contribute">投稿与互动</a>
+        <a href="/#timeline">条目时间线</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>条目信息为示例整理，评分与热度为动态汇总值，不构成观看建议。</span>
+      <span>页面更新于 2026-11-08</span>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="回到顶部">↑</button>
+
+<script>
+  (function () {
+    const backToTop = document.getElementById('backToTop');
+    const drawer = document.getElementById('mobileDrawer');
+    const overlay = document.getElementById('mobileOverlay');
+    const hamburger = document.getElementById('hamburgerBtn');
+    const drawerClose = document.getElementById('drawerClose');
+    const searchInput = document.getElementById('siteSearch');
+    const searchBtn = document.getElementById('searchBtn');
+    const featuredGrid = document.getElementById('featuredGrid');
+    const searchEmpty = document.getElementById('searchEmpty');
+    const navLinks = document.querySelectorAll('.channel-nav a');
+    const sections = document.querySelectorAll('section[id]');
+
+    function openDrawer() {
+      drawer.classList.add('open');
+      overlay.classList.add('active');
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      drawerClose.focus();
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      overlay.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      hamburger.focus();
+    }
+
+    hamburger.addEventListener('click', openDrawer);
+    drawerClose.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+
+    drawer.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', closeDrawer);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && drawer.classList.contains('open')) {
+        closeDrawer();
+      }
+    });
+
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > window.innerHeight * 0.8) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    backToTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    function highlightNav() {
+      let currentId = '';
+      const scrollPos = window.scrollY + 130;
+      sections.forEach(function (section) {
+        if (section.offsetTop <= scrollPos) {
+          currentId = section.id;
+        }
+      });
+      navLinks.forEach(function (link) {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '/#' + currentId) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', highlightNav);
+    highlightNav();
+
+    function performSearch() {
+      const query = searchInput.value.trim().toLowerCase();
+      const cards = featuredGrid.querySelectorAll('.work-card');
+      let visibleCount = 0;
+      cards.forEach(function (card) {
+        const text = card.textContent.toLowerCase();
+        if (!query || text.indexOf(query) !== -1) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      searchEmpty.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    searchBtn.addEventListener('click', performSearch);
+    searchInput.addEventListener('input', performSearch);
+    searchInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        performSearch();
+      }
+    });
+  })();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "松永纱奈作品",
+  "description": "松永纱奈作品聚合页，收录参演影片分类索引、最新更新、深度解析与相关资讯。",
+  "inLanguage": "zh-CN",
+  "about": {
+    "@type": "Person",
+    "name": "松永纱奈"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "松永纱奈的第一部主演作品是哪一部？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "按公开上线记录，2019 年 4 月的短片《夏の余白》是第一部挂主演名的作品，时长 48 分钟，导演为当时固定班底的成员之一。更早的 2018 年作品里她以配角出现，未计入主演序列。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "《雨声与旧信》和《夜行电车》哪部更适合先看？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "《雨声与旧信》的镜头更长、情绪铺陈更完整，适合作为了解她近期表演方式的入口。《夜行电车》的台词密度高，对手戏占比大，更适合已经看过一两部作品、想比较合演状态的观众。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "悬疑短剧和都市情感长片在制作上有什么不同？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "悬疑短剧的单集时长集中在 30—50 分钟，场景数通常不超过 5 个，剪辑节奏快，近景比例高。都市情感长片多在 90 分钟以上，场景更多，保留较多中景与长镜头。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "古装作品《灯籠の庭》的台词难懂吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "台词里保留了较多古语和敬语结构，没有字幕辅助的话理解门槛偏高。2024 年上线时发行方提供了两版字幕，意译版把部分古语换成了现代说法，理解起来更容易。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "实验短片《白噪音》为什么没有对白？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "导演在幕后访谈里提到，这部短片的设定是用环境音代替对话，全片靠雨声、脚步声和空调运转声推进。26 分钟里只有三处人声，且都处理成画外音。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "2026 年还有哪些未上线的新作？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "已公布但未上线的有《远泳》，定档 12 月，饰演游泳教练，合演名单含两位新人。另有消息称一部 40 分钟短剧在后期制作中，发行方尚未公布片名与上线时间。"
+      }
+    }
+  ]
+}
+</script>
+</body>
+                               </html>
