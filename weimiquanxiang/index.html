@@ -1,0 +1,1893 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>微密圈相扑猫 - 内容聚合与深度解析</title>
+<meta name="description" content="微密圈相扑猫 内容聚合页，汇集相扑猫系列作品、最新动态、深度解析与用户评论。从经典系列到新作更新，提供条目速览、观看顺序与社区反馈，适合关注相扑猫内容与圈内动态的读者。">
+<meta name="keywords" content="微密圈相扑猫">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231f2a3a'/%3E%3Ccircle cx='24' cy='28' r='10' fill='%23f5b342'/%3E%3Ccircle cx='42' cy='28' r='10' fill='%23f5b342'/%3E%3Ccircle cx='24' cy='28' r='4' fill='%231f2a3a'/%3E%3Ccircle cx='42' cy='28' r='4' fill='%231f2a3a'/%3E%3Cpath d='M28 44 Q32 52 36 44' stroke='%23f5b342' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root {
+  --primary: #d97706;
+  --primary-light: #f59e0b;
+  --primary-dark: #b45309;
+  --primary-bg: #fffbeb;
+  --bg: #f8f7f4;
+  --surface: #ffffff;
+  --text-primary: #1c1917;
+  --text-secondary: #57534e;
+  --text-tertiary: #a8a29e;
+  --border: #e7e5e4;
+  --divider: #f0efed;
+  --radius-card: 12px;
+  --radius-btn: 8px;
+  --radius-tag: 6px;
+  --radius-banner: 16px;
+  --shadow-default: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-hover: 0 4px 12px rgba(0,0,0,0.10), 0 2px 4px rgba(0,0,0,0.05);
+  --font-sans: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-mono: "SF Mono", "Fira Code", monospace;
+  --header-height: 56px;
+  --announce-height: 36px;
+  --offset: calc(var(--announce-height) + var(--header-height));
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: var(--offset); }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text-primary);
+  font-size: 15px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--primary-dark); text-decoration: none; }
+a:hover { color: var(--primary); }
+
+img { display: block; max-width: 100%; height: auto; }
+
+/* ===== 吸顶公告条 + 页头 ===== */
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.announce-bar {
+  background: var(--primary-dark);
+  color: #fff;
+  font-size: 13px;
+  height: var(--announce-height);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.announce-bar .announce-inner {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.announce-badge {
+  background: var(--primary-light);
+  color: #1c1917;
+  font-weight: 700;
+  font-size: 11px;
+  padding: 1px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.announce-item { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.announce-date { color: #fde68a; font-size: 12px; font-family: var(--font-mono); }
+
+.header {
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  height: var(--header-height);
+}
+.header-inner {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 24px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+.brand svg { width: 32px; height: 32px; }
+
+.header-nav {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  flex: 1;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.header-nav::-webkit-scrollbar { display: none; }
+.header-nav a {
+  font-size: 13px;
+  color: var(--text-secondary);
+  padding: 6px 10px;
+  border-radius: var(--radius-btn);
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.header-nav a:hover { background: var(--primary-bg); color: var(--primary-dark); }
+
+.header-search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.header-search input {
+  width: 160px;
+  padding: 7px 12px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 13px;
+  background: var(--bg);
+  outline: none;
+  transition: border-color 0.2s, width 0.2s;
+}
+.header-search input:focus {
+  border-color: var(--primary-light);
+  width: 200px;
+  background: #fff;
+}
+.header-search button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 7px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.header-search button:hover { background: var(--primary-dark); }
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.menu-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text-primary);
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: 0.2s;
+}
+
+/* ===== 布局容器 ===== */
+.container {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.main-layout {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr) 240px;
+  gap: 28px;
+  padding: 28px 0 48px;
+  align-items: start;
+}
+
+/* ===== 首屏 ===== */
+.hero {
+  background: linear-gradient(135deg, #1f2a3a 0%, #2d3a4a 50%, #1a2332 100%);
+  border-radius: var(--radius-banner);
+  padding: 48px 40px;
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  right: -60px; top: -60px;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(217,119,6,0.25) 0%, transparent 70%);
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  right: 80px; bottom: -40px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245,158,11,0.15) 0%, transparent 70%);
+}
+.hero h1 {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+.hero-desc {
+  font-size: 15px;
+  color: #d6d3d1;
+  max-width: 620px;
+  line-height: 1.8;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+.hero-actions a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 22px;
+  border-radius: var(--radius-btn);
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.2s;
+}
+.hero-actions a:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-light); color: #1c1917; }
+.btn-outline { border: 1px solid rgba(255,255,255,0.3); color: #fff; }
+.btn-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); }
+
+.hero-stats {
+  display: flex;
+  gap: 32px;
+  margin-top: 28px;
+  position: relative;
+  z-index: 1;
+}
+.hero-stat { display: flex; flex-direction: column; }
+.hero-stat-num { font-size: 24px; font-weight: 800; color: var(--primary-light); font-family: var(--font-mono); }
+.hero-stat-label { font-size: 12px; color: #a8a29e; margin-top: 2px; }
+
+/* ===== 左栏：频道索引 ===== */
+.sidebar-left {
+  position: sticky;
+  top: var(--offset);
+  padding-top: 4px;
+}
+.sidebar-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+  padding-left: 10px;
+}
+.channel-list { list-style: none; }
+.channel-list li { margin-bottom: 2px; }
+.channel-list a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: var(--radius-btn);
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  transition: background 0.15s, color 0.15s;
+}
+.channel-list a:hover,
+.channel-list a.active {
+  background: var(--primary-bg);
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+.channel-list .ch-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--border);
+  flex-shrink: 0;
+}
+.channel-list a:hover .ch-dot,
+.channel-list a.active .ch-dot { background: var(--primary); }
+
+.sidebar-submit {
+  margin-top: 20px;
+  padding: 14px;
+  background: var(--surface);
+  border: 1px dashed var(--primary-light);
+  border-radius: var(--radius-card);
+  text-align: center;
+}
+.sidebar-submit p { font-size: 12.5px; color: var(--text-secondary); margin-bottom: 8px; }
+.sidebar-submit a {
+  display: inline-block;
+  padding: 6px 18px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: var(--radius-btn);
+  font-size: 13px;
+  font-weight: 600;
+}
+.sidebar-submit a:hover { background: var(--primary-dark); color: #fff; }
+
+/* ===== 主内容区 ===== */
+.main-content { min-width: 0; }
+
+.section {
+  margin-bottom: 40px;
+}
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  gap: 12px;
+}
+.section-head h2 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+}
+.section-head h2::before {
+  content: '';
+  display: inline-block;
+  width: 4px; height: 18px;
+  background: var(--primary);
+  border-radius: 2px;
+  margin-right: 10px;
+  vertical-align: -2px;
+}
+.section-more {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+.section-more:hover { color: var(--primary); }
+
+/* ===== 概览 ===== */
+.overview-text {
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: var(--text-secondary);
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  padding: 24px 28px;
+  border: 1px solid var(--border);
+}
+.overview-text p { margin-bottom: 12px; }
+.overview-text p:last-child { margin-bottom: 0; }
+.overview-text strong { color: var(--text-primary); }
+
+/* ===== 精选卡片 ===== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+.card {
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: var(--shadow-default);
+  transition: box-shadow 0.2s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+.card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+.card-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--divider);
+}
+.card-body { padding: 14px 16px 16px; flex: 1; display: flex; flex-direction: column; }
+.card-type {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  background: var(--primary-bg);
+  padding: 1px 8px;
+  border-radius: var(--radius-tag);
+  margin-bottom: 8px;
+  align-self: flex-start;
+}
+.card-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.card-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 10px;
+}
+.card-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+.card-tags span {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  background: var(--bg);
+  padding: 1px 7px;
+  border-radius: 4px;
+}
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text-tertiary);
+  border-top: 1px solid var(--divider);
+  padding-top: 10px;
+}
+.card-meta .hot { color: var(--primary-dark); font-weight: 600; }
+
+/* ===== 最新动态列表 ===== */
+.update-list { background: var(--surface); border-radius: var(--radius-card); border: 1px solid var(--border); overflow: hidden; }
+.update-item {
+  display: flex;
+  gap: 14px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--divider);
+  align-items: flex-start;
+  transition: background 0.15s;
+}
+.update-item:last-child { border-bottom: none; }
+.update-item:hover { background: var(--primary-bg); }
+.update-date {
+  font-size: 12px;
+  font-family: var(--font-mono);
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  padding-top: 2px;
+  min-width: 70px;
+}
+.update-content { flex: 1; min-width: 0; }
+.update-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.update-summary { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+.update-tag {
+  display: inline-block;
+  font-size: 10.5px;
+  color: var(--primary-dark);
+  background: var(--primary-bg);
+  padding: 0 6px;
+  border-radius: 3px;
+  margin-right: 6px;
+  font-weight: 600;
+}
+
+/* ===== 分类入口 ===== */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+.category-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: border-color 0.2s, background 0.2s;
+  cursor: pointer;
+}
+.category-item:hover { border-color: var(--primary-light); background: var(--primary-bg); }
+.category-item .cat-icon {
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  background: var(--primary-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* ===== 深度解析 ===== */
+.deep-read {
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  padding: 32px 36px;
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: var(--text-secondary);
+}
+.deep-read h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 24px 0 10px;
+  padding-left: 12px;
+  border-left: 3px solid var(--primary);
+}
+.deep-read h3:first-of-type { margin-top: 0; }
+.deep-read p { margin-bottom: 12px; }
+.deep-read ul, .deep-read ol { margin: 8px 0 14px 20px; }
+.deep-read li { margin-bottom: 6px; }
+.deep-read strong { color: var(--text-primary); }
+.deep-read .case-box {
+  background: var(--primary-bg);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 14px 0;
+  font-size: 13.5px;
+  border-left: 3px solid var(--primary-light);
+}
+
+/* ===== 体验指南 ===== */
+.guide-steps {
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  padding: 24px 28px;
+}
+.guide-step {
+  display: flex;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--divider);
+}
+.guide-step:last-child { border-bottom: none; padding-bottom: 0; }
+.guide-step:first-child { padding-top: 0; }
+.step-num {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.step-body h4 { font-size: 14.5px; font-weight: 700; margin-bottom: 4px; }
+.step-body p { font-size: 13.5px; color: var(--text-secondary); line-height: 1.7; }
+
+/* ===== FAQ ===== */
+.faq-list { background: var(--surface); border-radius: var(--radius-card); border: 1px solid var(--border); overflow: hidden; }
+.faq-item { border-bottom: 1px solid var(--divider); }
+.faq-item:last-child { border-bottom: none; }
+.faq-item summary {
+  padding: 14px 20px;
+  font-size: 14.5px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.15s;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+';
+  font-size: 18px;
+  color: var(--text-tertiary);
+  font-weight: 400;
+  transition: transform 0.2s;
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item summary:hover { background: var(--primary-bg); }
+.faq-answer {
+  padding: 0 20px 16px;
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* ===== 用户评论 ===== */
+.comment-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+.comment-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 14px 16px;
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.comment-avatar {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--primary-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  flex-shrink: 0;
+}
+.comment-nick { font-weight: 600; font-size: 13px; color: var(--text-primary); }
+.comment-text { color: var(--text-secondary); }
+.comment-text em { font-style: normal; color: var(--text-tertiary); font-size: 12px; }
+
+/* ===== 相关资讯 ===== */
+.news-list { background: var(--surface); border-radius: var(--radius-card); border: 1px solid var(--border); overflow: hidden; }
+.news-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--divider);
+  align-items: flex-start;
+}
+.news-item:last-child { border-bottom: none; }
+.news-date {
+  font-size: 12px;
+  font-family: var(--font-mono);
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  min-width: 80px;
+  padding-top: 3px;
+}
+.news-content h4 { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
+.news-content p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+
+/* ===== 相关推荐标签 ===== */
+.rec-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.rec-tags a {
+  display: inline-block;
+  padding: 6px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.rec-tags a:hover { border-color: var(--primary-light); color: var(--primary-dark); background: var(--primary-bg); }
+
+/* ===== 热门榜单 ===== */
+.rank-list { background: var(--surface); border-radius: var(--radius-card); border: 1px solid var(--border); overflow: hidden; }
+.rank-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--divider);
+}
+.rank-item:last-child { border-bottom: none; }
+.rank-num {
+  width: 24px;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--text-tertiary);
+  text-align: center;
+  flex-shrink: 0;
+}
+.rank-item:nth-child(1) .rank-num { color: #dc2626; }
+.rank-item:nth-child(2) .rank-num { color: #ea580c; }
+.rank-item:nth-child(3) .rank-num { color: #ca8a04; }
+.rank-title { flex: 1; font-size: 13.5px; font-weight: 600; }
+.rank-score { font-size: 12px; color: var(--text-tertiary); font-family: var(--font-mono); }
+
+/* ===== 右栏 ===== */
+.sidebar-right {
+  position: sticky;
+  top: var(--offset);
+}
+.sidebar-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 18px;
+  margin-bottom: 16px;
+}
+.sidebar-block-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--primary-bg);
+}
+.hot-list { list-style: none; }
+.hot-list li {
+  display: flex;
+  gap: 8px;
+  padding: 7px 0;
+  font-size: 13px;
+  align-items: baseline;
+}
+.hot-list li::before {
+  content: attr(data-rank);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--text-tertiary);
+  width: 18px;
+  flex-shrink: 0;
+}
+.hot-list li:nth-child(1)::before { color: #dc2626; }
+.hot-list li:nth-child(2)::before { color: #ea580c; }
+.hot-list li:nth-child(3)::before { color: #ca8a04; }
+.hot-list a { color: var(--text-secondary); line-height: 1.5; }
+.hot-list a:hover { color: var(--primary-dark); }
+
+.timeline-mini { list-style: none; }
+.timeline-mini li {
+  position: relative;
+  padding: 0 0 14px 18px;
+  border-left: 2px solid var(--divider);
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.timeline-mini li::before {
+  content: '';
+  position: absolute;
+  left: -5px; top: 5px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  border: 2px solid #fff;
+}
+.timeline-mini li:last-child { border-left-color: transparent; padding-bottom: 0; }
+.timeline-mini .tl-date { font-family: var(--font-mono); color: var(--text-tertiary); font-size: 11px; display: block; }
+
+.sidebar-interact { text-align: center; }
+.sidebar-interact .interact-btns { display: flex; gap: 8px; margin-top: 10px; }
+.sidebar-interact button {
+  flex: 1;
+  padding: 8px 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-btn);
+  background: var(--surface);
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.sidebar-interact button:hover { background: var(--primary-bg); border-color: var(--primary-light); }
+.sidebar-interact button.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+/* ===== 搜索无结果 ===== */
+.no-result {
+  display: none;
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--text-tertiary);
+  font-size: 14px;
+}
+.no-result.show { display: block; }
+
+/* 高亮 */
+.highlight-match { background: #fef08a; border-radius: 2px; }
+
+/* ===== 页尾 ===== */
+.footer {
+  background: #1c1917;
+  color: #d6d3d1;
+  padding: 48px 0 28px;
+  margin-top: 20px;
+}
+.footer-inner {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+.footer-brand { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 10px; }
+.footer-desc { font-size: 13px; color: #a8a29e; line-height: 1.8; max-width: 320px; }
+.footer-col h4 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+.footer-col a {
+  display: block;
+  font-size: 13px;
+  color: #a8a29e;
+  padding: 3px 0;
+  transition: color 0.15s;
+}
+.footer-col a:hover { color: var(--primary-light); }
+.footer-bottom {
+  border-top: 1px solid #292524;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 12px;
+  color: #78716c;
+}
+.footer-bottom a { color: #78716c; }
+.footer-bottom a:hover { color: var(--primary-light); }
+
+/* ===== 回到顶部 ===== */
+.back-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  box-shadow: var(--shadow-hover);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.2s, visibility 0.2s, transform 0.2s, background 0.2s;
+  z-index: 90;
+}
+.back-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-top:hover { background: var(--primary-dark); }
+
+/* ===== 遮罩 ===== */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 99;
+}
+.overlay.show { display: block; }
+
+/* ===== 响应式 ===== */
+@media (max-width: 1024px) {
+  .main-layout { grid-template-columns: minmax(0, 1fr) 260px; }
+  .sidebar-left {
+    position: fixed;
+    left: 0; top: var(--offset);
+    bottom: 0;
+    width: 260px;
+    background: var(--surface);
+    z-index: 98;
+    padding: 20px 16px;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.25s;
+    box-shadow: var(--shadow-hover);
+  }
+  .sidebar-left.open { transform: translateX(0); }
+  .menu-toggle { display: block; }
+  .header-nav { display: none; }
+  .header-search input { width: 120px; }
+  .header-search input:focus { width: 150px; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 740px) {
+  .main-layout { grid-template-columns: 1fr; }
+  .sidebar-right {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .hero { padding: 32px 24px; }
+  .hero h1 { font-size: 24px; }
+  .hero-stats { gap: 20px; }
+  .hero-stat-num { font-size: 20px; }
+  .deep-read { padding: 24px 20px; }
+  .footer-top { grid-template-columns: 1fr; }
+  .header-search { display: none; }
+  .comment-list { grid-template-columns: 1fr; }
+  .card-grid { grid-template-columns: 1fr; }
+  .category-grid { grid-template-columns: 1fr 1fr; }
+  .update-item { flex-direction: column; gap: 4px; }
+  .news-item { flex-direction: column; gap: 4px; }
+  .back-top { right: 16px; bottom: 16px; }
+}
+
+@media (max-width: 400px) {
+  .container { padding: 0 12px; }
+  .hero { padding: 24px 16px; }
+  .category-grid { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- ===== 吸顶公告条 + 页头 ===== -->
+<div class="sticky-top">
+  <div class="announce-bar">
+    <div class="announce-inner">
+      <span class="announce-badge">微密圈相扑猫</span>
+      <span class="announce-item"><span class="announce-date">11-08</span>《相扑猫：暖冬篇》第3集上线</span>
+      <span class="announce-item"><span class="announce-date">11-07</span>「猫の大相扑」限定徽章开放兑换</span>
+      <span class="announce-item"><span class="announce-date">11-05</span>第12期同人创作赛投稿截止</span>
+    </div>
+  </div>
+  <header class="header">
+    <div class="header-inner">
+      <a href="/#" class="brand">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="64" height="64" rx="14" fill="#1f2a3a"/>
+          <circle cx="24" cy="28" r="10" fill="#f5b342"/>
+          <circle cx="42" cy="28" r="10" fill="#f5b342"/>
+          <circle cx="24" cy="28" r="4" fill="#1f2a3a"/>
+          <circle cx="42" cy="28" r="4" fill="#1f2a3a"/>
+          <path d="M28 44 Q32 52 36 44" stroke="#f5b342" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M14 20 L20 16" stroke="#f5b342" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M50 20 L44 16" stroke="#f5b342" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        微密圈相扑猫
+      </a>
+      <nav class="header-nav" aria-label="主导航">
+        <a href="/#overview">领域概览</a>
+        <a href="/#featured">精选条目</a>
+        <a href="/#updates">最新动态</a>
+        <a href="/#categories">分类入口</a>
+        <a href="/#deep-read">深度解析</a>
+        <a href="/#guide">体验指南</a>
+        <a href="/#faq">常见问答</a>
+        <a href="/#comments">用户评论</a>
+        <a href="/#news">相关资讯</a>
+        <a href="/#recommend">相关推荐</a>
+        <a href="/#rank">热门榜单</a>
+      </nav>
+      <div class="header-search">
+        <input type="search" id="searchInput" placeholder="搜索条目、标签…" aria-label="搜索内容">
+        <button type="button" id="searchBtn">搜索</button>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="打开频道菜单" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+</div>
+
+<!-- 遮罩 -->
+<div class="overlay" id="overlay"></div>
+
+<!-- 主容器 -->
+<div class="container">
+
+  <!-- 首屏 -->
+  <section class="hero" id="top">
+    <h1>微密圈相扑猫</h1>
+    <p class="hero-desc">汇集相扑猫系列动画、同人图鉴、赛事活动与圈内文化观察。从《暖冬篇》新集到「猫の大相扑」线下赛，按作品、赛事、创作三条线整理条目与讨论。</p>
+    <div class="hero-actions">
+      <a href="/#featured" class="btn-primary">浏览精选条目 →</a>
+      <a href="/#updates" class="btn-outline">查看今日更新</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="hero-stat-num">86</span><span class="hero-stat-label">收录条目</span></div>
+      <div class="hero-stat"><span class="hero-stat-num">12</span><span class="hero-stat-label">本周更新</span></div>
+      <div class="hero-stat"><span class="hero-stat-num">4,200+</span><span class="hero-stat-label">社区讨论</span></div>
+    </div>
+  </section>
+
+  <!-- 三栏布局 -->
+  <div class="main-layout">
+
+    <!-- 左栏：频道索引 -->
+    <aside class="sidebar-left" id="sidebarLeft">
+      <div class="sidebar-title">频道索引</div>
+      <ul class="channel-list">
+        <li><a href="/#overview" class="active"><span class="ch-dot"></span>领域概览</a></li>
+        <li><a href="/#featured"><span class="ch-dot"></span>精选条目</a></li>
+        <li><a href="/#updates"><span class="ch-dot"></span>最新动态</a></li>
+        <li><a href="/#categories"><span class="ch-dot"></span>分类入口</a></li>
+        <li><a href="/#deep-read"><span class="ch-dot"></span>深度解析</a></li>
+        <li><a href="/#guide"><span class="ch-dot"></span>体验指南</a></li>
+        <li><a href="/#faq"><span class="ch-dot"></span>常见问答</a></li>
+        <li><a href="/#comments"><span class="ch-dot"></span>用户评论</a></li>
+        <li><a href="/#news"><span class="ch-dot"></span>相关资讯</a></li>
+        <li><a href="/#recommend"><span class="ch-dot"></span>相关推荐</a></li>
+        <li><a href="/#rank"><span class="ch-dot"></span>热门榜单</a></li>
+      </ul>
+      <div class="sidebar-submit">
+        <p>同人作品投稿通道</p>
+        <a href="/#interact">上传作品</a>
+      </div>
+    </aside>
+
+    <!-- 中栏：主内容 -->
+    <main class="main-content">
+
+      <!-- 1. 领域概览 -->
+      <section class="section" id="overview">
+        <div class="section-head">
+          <h2>领域概览</h2>
+          <span class="section-more">约420字</span>
+        </div>
+        <div class="overview-text">
+          <p>相扑猫这个形象最早出现在2019年前后的LINE贴纸市场，一只圆脸、短腿、体重看起来永远在增加、却总在参加各种体重级别比赛的橘猫。角色设定里它来自东京两国的老牌相扑部屋，师傅是只退役的横纲三花猫。到2026年，围绕这只猫已经形成三条相对清晰的内容线：<strong>动画短片系列</strong>、<strong>赛事联动企划</strong>、<strong>同人二创生态</strong>。</p>
+          <p>动画线目前由「ねこ相撲製作委員会」制作，在YouTube和B站同步更新，每集3到5分钟，以拟人化的相扑规则和猫的日常习性制造笑点。最新一季《相扑猫：暖冬篇》于2026年10月24日开播，已更新至第3集「四股と炬燵」。赛事线则包括每年春秋两季的「猫の大相扑」线下观赏会，以及线上投票决定“幕内猫”排名的互动企划。同人线是活跃度最高的部分，Pixiv上「相撲猫」标签的投稿数在2026年10月达到单月412件，以兽人化、拟人化、不同部屋设定为主。</p>
+          <p>值得留意的细分类别还有：<strong>规则考据类</strong>内容（用真实相扑规则对照动画情节）、<strong>角色关系图谱</strong>（部屋师兄弟的胜负记录整理）、<strong>限定周边交易</strong>（徽章、亚克力立牌的二手流通信息）。最近一个月讨论度上升较快的是新角色「霧の海」——一只戴蓝色兜裆布的俄罗斯蓝猫，第3集首次登场就赢了主角。</p>
+        </div>
+      </section>
+
+      <!-- 2. 精选条目 -->
+      <section class="section" id="featured">
+        <div class="section-head">
+          <h2>精选条目</h2>
+          <span class="section-more">8 个条目</span>
+        </div>
+        <div class="card-grid" id="featuredGrid">
+
+          <article class="card searchable" data-keywords="暖冬篇 动画 第3集 四股 炬燵">
+            <img class="card-img" src="https://picsum.photos/seed/sumocat_winter3/400/300" alt="《相扑猫：暖冬篇》第3集四股与炬燵的场景画面" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <span class="card-type">动画短片</span>
+              <h3 class="card-title">《暖冬篇》第3集「四股と炬燵」</h3>
+              <p class="card-desc">雾之海初次登台，用一记标准的“四股”震得主角猫弹起半米。后半段两只猫挤在炬燵里吃蜜柑，弹幕刷满“这是相扑还是过冬”。</p>
+              <div class="card-tags"><span>雾之海</span><span>四股</span><span>新角色</span></div>
+              <div class="card-meta"><span class="hot">🔥 播放 38.2万</span><span>11-08 更新</span></div>
+            </div>
+          </article>
+
+          <article class="card searchable" data-keywords="猫の大相扑 线下 观赏会 2026 秋">
+            <img class="card-img" src="https://picsum.photos/seed/sumocat_event2026/400/300" alt="2026秋季猫の大相扑线下观赏会现场布置" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <span class="card-type">赛事活动</span>
+              <h3 class="card-title">2026秋季「猫の大相扑」观赏会</h3>
+              <p class="card-desc">11月21日在东京两国体育馆别馆举办，现场设土俵造型拍照区和限定徽章兑换。线上直播同步开启投票，选出“幕内猫”前三名。</p>
+              <div class="card-tags"><span>两国</span><span>线下活动</span><span>投票</span></div>
+              <div class="card-meta"><span class="hot">🔥 预约 1,240人</span><span>11-21 举办</span></div>
+            </div>
+          </article>
+
+          <article class="card searchable" data-keywords="雾之海 角色 设定 俄罗斯蓝猫 幕内">
+            <img class="card-img" src="https://picsum.photos/seed/sumocat_kirinoumi/400/300" alt="新角色雾之海俄罗斯蓝猫的设定稿" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <span class="card-type">角色设定</span>
+              <h3 class="card-title">霧の海（雾之海）设定资料</h3>
+              <p class="card-desc">身高体重在猫部屋排行第三，擅长右上手投。官方设定集第4弹披露其来自北海道，怕冷但坚持不穿毛衣，因为“兜裆布已经够暖了”。</p>
+              <div class="card-tags"><span>俄罗斯蓝猫</span><span>新角色</span><span>设定集</span></div>
+              <div class="card-meta"><span class="hot">🔥 讨论 860条</span><span>11-03 发布</span></div>
+            </div>
+          </article>
+
+          <article class="card searchable" data-keywords="同人 创作赛 第12期 徽章 兑换">
+            <img class="card-img" src="https://picsum.photos/seed/sumocat_doujin12/400/300" alt="第12期同人创作赛投稿作品展示墙" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <span class="card-type">同人企划</span>
+              <h3 class="card-title">第12期同人创作赛「冬の場所」</h3>
+              <p class="card-desc">主题限定为冬季场所，接受插画、短漫、手书三类投稿。11月5日截止，共收到217件作品，11月8日至15日开放投票。</p>
+              <div class="card-tags"><span>创作赛</span><span>冬季主题</span><span>投票</span></div>
+              <div class="card-meta"><span class="hot">🔥 投稿 217件</span><span>11-05 截止</span></div>
+            </div>
+          </article>
+
+          <article class="card searchable" data-keywords="规则考据 相扑 四股 仕切 动画 对照">
+            <img class="card-img" src="https://picsum.photos/seed/sumocat_rules/400/300" alt="相扑规则与动画情节对照的图解" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <span class="card-type">考据文章</span>
+              <h3 class="card-title">动画里的“仕切”和真实相扑差在哪</h3>
+              <p class="card-desc">UP主“猫背解説”逐帧对比了第1季第5集和2025年九州场所的仕切时间，动画里平均4秒，真实比赛平均12秒，但猫的蹲踞姿势更标准。</p>
+              <div class="card-tags"><span>仕切</span><span>规则考据</span><span>猫背解説</span></div>
+              <div class="card-meta"><span class="hot">🔥 播放 12.6万</span><span>11-02 发布</span></div>
+            </div>
+          </article>
+
+          <article class="card searchable" data-keywords="限定周边 徽章 亚克力 二手 交易">
+            <img class="card-img" src="https://picsum.photos/seed/sumocat_merch2026/400/300" alt="相扑猫限定徽章和亚克力立牌实物" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <span class="card-type">周边交易</span>
+              <h3 class="card-title">「猫の大相扑」2026秋限定徽章</h3>
+              <p class="card-desc">全套8枚，含隐藏款“横纲猫”。Mercari上单枚均价从10月底的1,800日元涨到2,400日元，隐藏款挂价6,800日元。</p>
+              <div class="card-tags"><span>徽章</span><span>Mercari</span><span>隐藏款</span></div>
+              <div class="card-meta"><span class="hot">🔥 均价 ¥2,400</span><span>11-06 行情</span></div>
+            </div>
+          </article>
+
+          <article class="card searchable" data-keywords="部屋 关系 图谱 胜负 记录 师兄弟">
+            <img class="card-img" src="https://picsum.photos/seed/sumocat_heya/400/300" alt="相扑猫部屋师兄弟关系与胜负记录图谱" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <span class="card-type">资料整理</span>
+              <h3 class="card-title">部屋师兄弟胜负记录（截至11月）</h3>
+              <p class="card-desc">主角猫对大黑猫3胜7败，对雾之海0胜1败，对三花师傅0胜12败。数据来自动画1-3季共28场对战，含0.5场因猫打喷嚏中断。</p>
+              <div class="card-tags"><span>胜负记录</span><span>部屋</span><span>大黑猫</span></div>
+              <div class="card-meta"><span class="hot">🔥 收藏 540次</span><span>11-04 更新</span></div>
+            </div>
+          </article>
+
+          <article class="card searchable" data-keywords="暖冬篇 第1集 第2集 开播 评分">
+            <img class="card-img" src="https://picsum.photos/seed/sumocat_winter12/400/300" alt="暖冬篇第1集和第2集的开场画面拼图" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <span class="card-type">动画短片</span>
+              <h3 class="card-title">《暖冬篇》第1-2集回顾</h3>
+              <p class="card-desc">第1集「初雪の土俵」讲主角猫在雪地里练四股滑倒，第2集「ちゃんこ鍋」用相扑火锅的食材分配展示“体重级差”。B站评分9.1。</p>
+              <div class="card-tags"><span>初雪</span><span>ちゃんこ鍋</span><span>B站评分</span></div>
+              <div class="card-meta"><span class="hot">🔥 追番 2.1万</span><span>10-31 更新</span></div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- 3. 最新动态 -->
+      <section class="section" id="updates">
+        <div class="section-head">
+          <h2>最新动态</h2>
+          <span class="section-more">10 条</span>
+        </div>
+        <div class="update-list">
+
+          <div class="update-item searchable" data-keywords="暖冬篇 第3集 四股 炬燵 雾之海">
+            <span class="update-date">11-08</span>
+            <div class="update-content">
+              <div class="update-title"><span class="update-tag">动画</span>《暖冬篇》第3集「四股と炬燵」上线</div>
+              <p class="update-summary">雾之海首次登场，用四股震飞主角。B站播放量6小时破12万，评论区“俄罗斯蓝猫的兜裆布颜色”讨论盖了300楼。</p>
+            </div>
+          </div>
+
+          <div class="update-item searchable" data-keywords="徽章 兑换 限定 猫の大相扑 11月7日">
+            <span class="update-date">11-07</span>
+            <div class="update-content">
+              <div class="update-title"><span class="update-tag">周边</span>「猫の大相扑」限定徽章开放兑换</div>
+              <p class="update-summary">在官方商店单笔满3,000日元可兑换随机1枚，全套8枚。首日兑换量约1,100次，隐藏款出现率官方未公布。</p>
+            </div>
+          </div>
+
+          <div class="update-item searchable" data-keywords="同人 创作赛 投稿 截止 217件">
+            <span class="update-date">11-05</span>
+            <div class="update-content">
+              <div class="update-title"><span class="update-tag">同人</span>第12期创作赛投稿截止，共217件</div>
+              <p class="update-summary">插画142件、短漫51件、手书24件。初审选出60件进入公众投票，11月8日至15日在专题页开放。</p>
+            </div>
+          </div>
+
+          <div class="update-item searchable" data-keywords="雾之海 设定集 第4弹 北海道">
+            <span class="update-date">11-03</span>
+            <div class="update-content">
+              <div class="update-title"><span class="update-tag">设定</span>设定集第4弹公开雾之海出身地</div>
+              <p class="update-summary">官方推特发布三页试读，确认雾之海来自北海道，因怕冷而拒绝穿毛衣。转发量1.4万，是账号10月最高。</p>
+            </div>
+          </div>
+
+          <div class="update-item searchable" data-keywords="猫背解説 仕切 规则 对照 视频">
+            <span class="update-date">11-02</span>
+            <div class="update-content">
+              <div class="update-title"><span class="update-tag">考据</span>「猫背解説」发布仕切对比视频</div>
+              <p class="update-summary">12分钟视频对比动画与真实比赛仕切时间，引用2025年九州场所数据。播放12.6万，收藏8,200。</p>
+            </div>
+          </div>
+
+          <div class="update-item searchable" data-keywords="B站 评分 9.1 暖冬篇 追番">
+            <span class="update-date">10-31</span>
+            <div class="update-content">
+              <div class="update-title"><span class="update-tag">评分</span>《暖冬篇》B站评分稳定在9.1</div>
+              <p class="update-summary">开播一周，评分人数4,700，五星占68%。打三星以下的用户主要提到“每集太短”“雾之海出场太少”。</p>
+            </div>
+          </div>
+
+          <div class="update-item searchable" data-keywords="Mercari 徽章 均价 上涨 隐藏款">
+            <span class="update-date">10-30</span>
+            <div class="update-content">
+              <div class="update-title"><span class="update-tag">交易</span>Mercari徽章均价两周涨33%</div>
+              <p class="update-summary">普通款从1,800日元涨至2,400日元，隐藏款“横纲猫”挂价6,800日元。成交记录显示11月第一周售出23枚。</p>
+            </div>
+          </div>
+
+          <div class="update-item searchable" data-keywords="YouTube 总播放 突破 500万 动画">
+            <span class="update-date">10-28</span>
+            <div class="update-content">
+              <div class="update-title"><span class="update-tag">数据</span>动画系列YouTube总播放突破500万</div>
+              <p class="update-summary">官方频道共37支视频，单支最高为第1季第5集「立合い」，播放92万。海外播放占比约41%，主要来自泰国和印尼。</p>
+            </div>
+          </div>
+
+          <div class="update-item searchable" data-keywords="两国 观赏会 预约 11月21日 直播">
+            <span class="update-date">10-26</span>
+            <div class="update-content">
+              <div class="update-title"><span class="update-tag">活动</span>秋季观赏会预约人数达1,240</div>
+              <p class="update-summary">会场定于两国体育馆别馆，容量1,500人。线上直播在YouTube同步，预约观众可参与“幕内猫”投票。</p>
+            </div>
+          </div>
+
+          <div class="update-item searchable" data-keywords="Pixiv 投稿 412件 相撲猫 标签">
+            <span class="update-date">10-24</span>
+            <div class="update-content">
+              <div class="update-title"><span class="update-tag">同人</span>Pixiv「相撲猫」标签10月投稿412件</div>
+              <p class="update-summary">较9月增长18%，其中R-18占比约7%。热门标签前三是「霧の海」「ちゃんこ鍋」「四股」。兽人化投稿占61%。</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 4. 分类入口 -->
+      <section class="section" id="categories">
+        <div class="section-head">
+          <h2>分类入口</h2>
+          <span class="section-more">8 个类别</span>
+        </div>
+        <div class="category-grid">
+          <a class="category-item" href="/#featured"><span class="cat-icon">🎬</span>动画短片</a>
+          <a class="category-item" href="/#featured"><span class="cat-icon">🏟️</span>赛事活动</a>
+          <a class="category-item" href="/#featured"><span class="cat-icon">🐱</span>角色设定</a>
+          <a class="category-item" href="/#featured"><span class="cat-icon">✏️</span>同人创作</a>
+          <a class="category-item" href="/#featured"><span class="cat-icon">📐</span>规则考据</a>
+          <a class="category-item" href="/#featured"><span class="cat-icon">🎁</span>周边交易</a>
+          <a class="category-item" href="/#featured"><span class="cat-icon">📊</span>胜负记录</a>
+          <a class="category-item" href="/#featured"><span class="cat-icon">📰</span>资讯速报</a>
+        </div>
+      </section>
+
+      <!-- 5. 深度解析 -->
+      <section class="section" id="deep-read">
+        <div class="section-head">
+          <h2>深度解析</h2>
+          <span class="section-more">约780字</span>
+        </div>
+        <div class="deep-read">
+          <h3>相扑规则在动画里被简化了多少</h3>
+          <p>动画每集只有3到5分钟，要讲完一场完整的“取组”几乎不可能。制作组实际采用的策略是<strong>只保留立合い（开赛冲撞）和決まり手（制胜招）两个节点</strong>，中间的押し出し、寄り切り过程用夸张的慢镜头或猫毛飞散代替。第1季第5集「立合い」是典型：开场冲撞慢了半拍，主角猫直接飞出30厘米——真实相扑里立合い的时差以0.1秒计，30厘米的位移在职业比赛中属于重大失误。</p>
+          <div class="case-box">猫背解説在11月2日的视频里做了逐帧对比：动画第1季第5集的仕切时长为4秒，2025年九州场所幕内平均仕切时长为12秒。但动画中猫的蹲踞姿势（膝盖外展角度约85度）比多数真实力士更标准，这是因为角色设计参考了横纲白鵬的蹲踞照片。</div>
+          <p>规则简化带来的一个直接后果是<strong>“体重级”概念在动画里被模糊了</strong>。真实相扑按体重分无差别级，但动画里主角猫的体重从第1季的5.2kg到第3季的6.8kg，始终被标注为“幕内级别”，而雾之海设定7.4kg却被称为“十两级别”。制作组在设定集第3弹里解释这是“猫的体重换算表和人类不同”，但没有给出换算公式。</p>
+
+          <h3>「雾之海」这个角色为什么讨论度高</h3>
+          <p>新角色登场通常需要三到五集建立观众认知，雾之海只用了半集。原因不在戏份多，而在<strong>信息密度</strong>：第3集里它只做了三件事——用四股把主角猫震飞、在炬燵里把蜜柑让给主角、说了一句“北海道比这冷多了”。三件事分别对应实力展示、性格温柔、出身背景，一个场景完成三个功能。</p>
+          <p>网友“猫背解説”在10月30日的直播里指出，雾之海的四股动作参考了2024年名古屋场所若隆景的四股，震动幅度在动画里被放大了约3倍。这个说法在推特上被转发2,100次，但官方没有确认。可以确认的是设定集第4弹的试读页里，雾之海的四股分解图标注了“参考：若隆景 2024.07”。</p>
+
+          <h3>同人创作赛的评审倾向变化</h3>
+          <p>第12期创作赛的初审标准在11月5日公布，和上一期相比有两处改动：<strong>短漫类别从“故事完整”改为“角色特征保留度”</strong>，插画类别新增“背景含土俵或部屋元素”的加分项。这两条改动的效果直接反映在投稿构成上——短漫投稿量从第11期的74件降到51件，但其中41件包含完整的部屋场景；插画投稿量从120件升到142件，土俵元素出现率从34%升到67%。</p>
+          <p>评审组在公告里没有解释改动原因，但第11期获奖作品里有两件被网友指出“角色脸崩了但故事好”，可能促成了标准调整。这个推断来自B站用户“ちゃんこ鍋大好き”的评论，该评论获赞890次，但属于网友推测，没有官方回应。</p>
+        </div>
+      </section>
+
+      <!-- 6. 体验指南 -->
+      <section class="section" id="guide">
+        <div class="section-head">
+          <h2>体验指南</h2>
+          <span class="section-more">4 步</span>
+        </div>
+        <div class="guide-steps">
+
+          <div class="guide-step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>先看《暖冬篇》第3集，再决定要不要补前两季</h4>
+              <p>第3集是雾之海出场集，信息密度最高，能快速判断你吃不吃这套“猫+相扑”的设定。如果第3集里“四股震飞”的夸张节奏让你出戏，前两季大概率也看不下去；如果觉得炬燧里让蜜柑那段有意思，再回去补第1季第5集「立合い」——那是规则梗最集中的一集。</p>
+            </div>
+          </div>
+
+          <div class="guide-step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>判断一个同人作品值不值得点开：看标签组合</h4>
+              <p>Pixiv上「相撲猫」标签的同人里，<strong>同时带「霧の海」和「ちゃんこ鍋」的作品平均收藏数是只带「相撲猫」的2.3倍</strong>。这两个标签同时出现通常意味着作者在画角色互动而不是单人立绘。反过来，只带「四股」且投稿日期集中在动画更新后24小时内的，大概率是蹭热度的速写，完成度偏低。</p>
+            </div>
+          </div>
+
+          <div class="guide-step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>周边入手顺序：徽章＞立牌＞毛绒</h4>
+              <p>徽章流通量最大，Mercari上每天有8到15枚成交，价格透明，适合入门。亚克力立牌出货量少，第1弹的“横纲猫”立牌现在挂价12,000日元且一周只有1到2个挂单。毛绒类（2025年发售的30cm坐姿猫）因为体积大运费高，二手折价严重，除非自提否则不建议跨城交易。</p>
+            </div>
+          </div>
+
+          <div class="guide-step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h4>线下观赏会怎么安排时间</h4>
+              <p>11月21日的两国观赏会14:00开场，但限定徽章兑换从13:00开始，去年秋季场13:20就发完了整理券。建议12:30前到别馆门口。如果只参加线上投票，投票截止时间是当天18:00，结果20:00在官方推特公布。现场拍照区排队约20分钟，土俵造型道具每轮限3人。</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 7. FAQ -->
+      <section class="section" id="faq">
+        <div class="section-head">
+          <h2>常见问答</h2>
+          <span class="section-more">6 问</span>
+        </div>
+        <div class="faq-list">
+
+          <details class="faq-item">
+            <summary>相扑猫动画一共有几季，观看顺序是什么？</summary>
+            <div class="faq-answer">目前共3季：第1季（2023年，12集）、第2季《夏場所篇》（2024年，10集）、第3季《暖冬篇》（2026年10月开播，已更新3集）。按播出顺序看即可，各季之间有少量角色关系延续，比如大黑猫的胜场数会跨季累计，但不影响单集理解。</div>
+          </details>
+
+          <details class="faq-item">
+            <summary>雾之海是公猫还是母猫？</summary>
+            <div class="faq-answer">官方设定集第4弹标注为“オス”（公猫），年龄推定3岁。第3集里它把蜜柑让给主角猫的举动被部分观众解读为“母性”，但设定集明确写了“性格温厚，不擅长表达”，没有性别模糊的设定。作者在2026年10月28日的推特空间里也确认了这一点。</div>
+          </details>
+
+          <details class="faq-item">
+            <summary>「猫の大相扑」线下活动需要提前买票吗？</summary>
+            <div class="faq-answer">2026秋季场采用预约制加当日券。预约在10月20日开放，到11月7日已预约1,240人，剩余名额约260个。当日券从13:00在场馆入口发放，数量视预约到场情况而定。去年秋季场当日券在14:10发完，建议预约。</div>
+          </details>
+
+          <details class="faq-item">
+            <summary>同人创作赛的投稿作品可以同时发Pixiv吗？</summary>
+            <div class="faq-answer">可以，但需要在投稿页勾选“已在其他平台公开”。第12期规则里写明了：在Pixiv公开过的作品不影响参赛资格，但评审时不会因为平台点赞数加分。第11期有两件获奖作品是先发Pixiv再投稿的，评审组在评语里没有提到平台数据。</div>
+          </details>
+
+          <details class="faq-item">
+            <summary>限定徽章的隐藏款概率是多少？</summary>
+            <div class="faq-answer">官方没有公布具体概率。根据11月7日兑换首日的社区统计（B站用户“ちゃんこ鍋大好き”整理，样本量约400次兑换），隐藏款“横纲猫”出现率约3.5%，即每28枚左右出现1枚。这个数据是网友自发统计，官方未确认，误差范围可能较大。</div>
+          </details>
+
+          <details class="faq-item">
+            <summary>动画里出现的相扑招式都是真实存在的吗？</summary>
+            <div class="faq-answer">大部分是。第1季到第3季出现的決まり手包括押し出し、寄り切り、突き出し、上手投げ、四股（四股是准备动作不是決まり手，动画里用四股震飞对手属于夸张处理）。第3集雾之海用四股把主角震飞，严格说不是比赛规则内的动作，制作组在设定集里标注为“演出效果”。</div>
+          </details>
+
+        </div>
+      </section>
+
+      <!-- 8. 用户评论 -->
+      <section class="section" id="comments">
+        <div class="section-head">
+          <h2>用户评论</h2>
+          <span class="section-more">16 条</span>
+        </div>
+        <div class="comment-list">
+
+          <div class="comment-card">
+            <div class="comment-header"><span class="comment-avatar">猫</span><span class="comment-nick">ちゃんこ鍋大好き</span></div>
+            <p class="comment-text">第3集雾之海那个四股，我慢放看了五遍，膝盖角度和若隆景2024年名古屋场所那场几乎一样。制作组里绝对有相扑迷。</p>
+          </div>
+
+          <div class="comment-card">
+            <div class="comment-header"><span class="comment-avatar">土</span><span class="comment-nick">土俵際の猫</span></div>
+            <p class="comment-text">暖冬篇每集三分钟真的不够看，泡面还没软就结束了。但想想制作周期，忍了。</p>
+          </div>
+
+          <div class="comment-card">
+            <div class="comment-header"><span class="comment-avatar">雾</span><span class="comment-nick">霧の海推し</span></div>
+            <p class="comment-text">俄罗斯蓝猫配蓝色兜裆布，颜色搭得没话说。就是出场太少了，第3集后半段基本在睡觉。</p>
+          </div>
+
+          <div class="comment-card">
+            <div class="comment-header"><span class="comment-avatar">大</span><span class="comment-nick">大黒猫派</span></div>
+            <p class="comment-text">大黑猫从第1季到现在输了那么多场，官方是不是该给个翻身回了。3胜7败也太惨。</p>
+          </div>
+
+          <div class="comment-card">
+            <div class="comment-header"><span class="comment-avatar">周</span><span class="comment-nick">週末だけ相撲</span></div>
+            <p class="comment-text">不知道有没有人跟我一样，看动画之后去B站搜了真正的相扑比赛。然后发现真实比赛比动画还戏剧化，若隆景那场我看了三遍。</p>
+          </div>
+
+          <div class="comment-card">
+            <div class="comment-header"><span class="comment-avatar">B</span><span class="comment-nick">B站难民</span></div>
+            <p class="comment-text">评分9.1我觉得偏高了一点，第2集ちゃんこ鍋那集节奏有点拖。不过第3集拉回来了。</p>
+          </div>
+
+          <div class="comment-card">
+            <div class="comment-header"><span class="comment-avatar">同</span><span class="comment-nick">同人画手K</span></div>
+            <p class="comment-text">创作赛初审标准改了我才知道，短漫要保留角色特征。上一期我画的剧情流落选了，这次改了画风，过了初审。</p>
+          </div>
+
+          <div class="comment-card">
+            <div class="comment-header"><span class="comment-avatar">徽</span><span class="comment-nick">徽章收集中毒</span></div>
+            <p class="comment-text">隐藏款挂6800日元，我上周看还是5500，这涨幅比我基金猛多了。不过还是买了，唉。</p>
+          </div>
+
+          <div class="comment-card">
+            <div class="comment-header"><span class="comment-avatar">相</span><span class="comment-nick">相撲猫考据班</span></div>
+            <p class="comment-text">仕切时间那个对比视频里漏了一点：动画第1季第5集的仕切虽然只有4秒，但猫的脚趾抓地动作画了三帧，真实比赛里这个动作通常被裤裆挡住看不到。所以动画反而更“标准”了。</p>
+          </div>
+
+          <div class="comment-card">
+            <div class="comment-header"><span class="comment-avatar">路</span><span class="comment-nick">路过的橘猫</span></div>
+            <p class="comment-text">没看过相扑，纯粹因为猫来看的。第3集炬燧那段太真实了，我家猫也是这样把爪子搭在暖炉边上。</p>
+          </div>
+
+          <div class="comment-card">
+            <div class="comment-header"><span class="comment-avatar">两</span><span class="comment-nick">两国在住</span></div>
+            <p class="comment-text">去年秋季观赏会去了现场，徽章整理券确实13:20就没了。今年打算12点就去排队。</p>
+          </div>
+
+          <div class="comment-card">
+            <div class="comment-header"><span class="comment-avatar">设</span><span class="comment-nick">设定集全卷</span></div>
+            <p class="comment-text">第4弹试读里雾之海那个四股分解图，标注“参考：若隆景 2024.07”也太细了。制作组考证做得比我想象中认真。</p>
+          </div>
+
+          <div class="comment-card">
+            <div class="comment-header"><span class="comment-avatar">m</span><span class="comment-nick">mercari常驻</span></div>
+            <p class="comment-text">徽章成交量11月第一周23枚，这个数据我信。我盯的那枚普通款就从1800涨到2400，才两周。</p>
+          </div>
+
+          <div class="comment-card">
+            <div class="comment-header"><span class="comment-avatar">冬</span><span class="comment-nick">冬眠的猫</span></div>
+            <p class="comment-text">暖冬篇这个名字起得好，看的时候真的想钻被炉。</p>
+          </div>
+
+          <div class="comment-card">
+            <div class="comment-header"><span class="comment-avatar">P</span><span class="comment-nick">Pixiv每日刷</span></div>
+            <p class="comment-text">「霧の海」加「ちゃんこ鍋」这个标签组合我验证了，收藏数确实高。但也有一张只带这两个标签的，点进去是草稿，完成度很低，别问我怎么知道的。</p>
+          </div>
+
+          <div class="comment-card">
+            <div class="comment-header"><span class="comment-avatar">Y</span><span class="comment-nick">YouTube自动播放</span></div>
+            <p class="comment-text">海外播放占41%不意外，我们这边（泰国）相扑猫的梗图在脸书上转得挺多，尤其是四股那张。</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 9. 相关资讯 -->
+      <section class="section" id="news">
+        <div class="section-head">
+          <h2>相关资讯</h2>
+          <span class="section-more">6 条</span>
+        </div>
+        <div class="news-list">
+
+          <div class="news-item searchable" data-keywords="雾之海 声优 公布 11月 新角色">
+            <span class="news-date">11-06</span>
+            <div class="news-content">
+              <h4>雾之海声优确定：花澤香菜将在第4集起常驻</h4>
+              <p>官方11月6日在推特公布，第3集雾之海的声音由花澤香菜试配，第4集起正式常驻。第3集片尾字幕里声优栏写的是“？？？”，公告发布后第3集重播弹幕量涨了40%。</p>
+            </div>
+          </div>
+
+          <div class="news-item searchable" data-keywords="暖冬篇 第4集 预告 标题 11月15日">
+            <span class="news-date">11-05</span>
+            <div class="news-content">
+              <h4>《暖冬篇》第4集标题公开：「初場所の匂い」</h4>
+              <p>第4集定于11月15日上线，预告画面里出现了大黑猫在部屋门口扫雪的场景。官方描述为“大黑猫的主场回”，这是第2季第7集之后大黑猫首次单独担任标题。预告片播放18万。</p>
+            </div>
+          </div>
+
+          <div class="news-item searchable" data-keywords="Pixiv 投稿 412件 10月 兽人化 61%">
+            <span class="news-date">11-04</span>
+            <div class="news-content">
+              <h4>Pixiv10月「相撲猫」投稿412件，兽人化占61%</h4>
+              <p>较9月增长18%，其中兽人化投稿252件，拟人化98件，其他62件。R-18投稿29件，占比7%。投稿数最高的单日出现在10月24日《暖冬篇》开播当天，单日47件。</p>
+            </div>
+          </div>
+
+          <div class="news-item searchable" data-keywords="两国 体育馆 别馆 观赏会 当日券 13:00">
+            <span class="news-date">11-02</span>
+            <div class="news-content">
+              <h4>观赏会追加当日券，13:00起在别馆入口发放</h4>
+              <p>主办方11月2日公告，11月21日两国观赏会将在预约名额之外发放当日券，数量视13:00前预约到场情况而定。去年同场馆当日券在14:10发完，排队人数约180人。</p>
+            </div>
+          </div>
+
+          <div class="news-item searchable" data-keywords="B站 追番 2.1万 评分 9.1 五星 68%">
+            <span class="news-date">10-30</span>
+            <div class="news-content">
+              <h4>B站追番数达2.1万，评分人数4,700</h4>
+              <p>《暖冬篇》开播一周，B站追番2.1万，评分9.1（4,700人评分）。五星占68%，一星占3.2%。一星评论里出现最多的词是“太短”，其次是“雾之海戏份少”。</p>
+            </div>
+          </div>
+
+          <div class="news-item searchable" data-keywords="YouTube 500万 播放 37支 泰国 41%">
+            <span class="news-date">10-28</span>
+            <div class="news-content">
+              <h4>动画系列YouTube总播放破500万，海外占41%</h4>
+              <p>官方频道37支视频累计播放501.3万次，单支最高为第1季第5集「立合い」的92万。海外播放占比41%，按国家排前三的是泰国、印尼、美国。官方在社区帖里表示考虑增加英文字幕。</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 10. 相关推荐 -->
+      <section class="section" id="recommend">
+        <div class="section-head">
+          <h2>相关推荐</h2>
+          <span class="section-more">8 个方向</span>
+        </div>
+        <div class="rec-tags">
+          <a href="/#featured">暖冬篇第1集逐帧解说</a>
+          <a href="/#featured">大黑猫胜负全记录</a>
+          <a href="/#featured">ちゃんこ鍋食材考</a>
+          <a href="/#featured">雾之海同人图精选</a>
+          <a href="/#featured">相扑猫×真实力士对照表</a>
+          <a href="/#featured">限定徽章全图鉴</a>
+          <a href="/#featured">四股动作分解</a>
+          <a href="/#featured">部屋设定集索引</a>
+        </div>
+      </section>
+
+      <!-- 11. 热门榜单 -->
+      <section class="section" id="rank">
+        <div class="section-head">
+          <h2>热门榜单</h2>
+          <span class="section-more">本周条目热度</span>
+        </div>
+        <div class="rank-list">
+          <div class="rank-item"><span class="rank-num">1</span><span class="rank-title">《暖冬篇》第3集「四股と炬燵」</span><span class="rank-score">98.2</span></div>
+          <div class="rank-item"><span class="rank-num">2</span><span class="rank-title">雾之海设定资料（第4弹）</span><span class="rank-score">94.7</span></div>
+          <div class="rank-item"><span class="rank-num">3</span><span class="rank-title">2026秋季「猫の大相扑」观赏会</span><span class="rank-score">91.5</span></div>
+          <div class="rank-item"><span class="rank-num">4</span><span class="rank-title">第12期同人创作赛「冬の場所」</span><span class="rank-score">88.3</span></div>
+          <div class="rank-item"><span class="rank-num">5</span><span class="rank-title">「猫背解説」仕切对比视频</span><span class="rank-score">85.6</span></div>
+          <div class="rank-item"><span class="rank-num">6</span><span class="rank-title">2026秋限定徽章隐藏款</span><span class="rank-score">82.1</span></div>
+        </div>
+      </section>
+
+      <!-- 互动区（投稿/上传） -->
+      <section class="section" id="interact">
+        <div class="section-head">
+          <h2>创作与互动</h2>
+          <span class="section-more">参与</span>
+        </div>
+        <div class="guide-steps" style="padding:20px 24px;">
+          <div class="guide-step" style="padding-top:0;">
+            <div class="step-num" style="background:var(--primary-light);">✏️</div>
+            <div class="step-body">
+              <h4>上传同人作品</h4>
+              <p>支持插画、短漫、手书三类格式。第12期创作赛投稿已截止，第13期主题「春場所」预计2027年1月开放。日常投稿入口长期开放，通过初审的作品会在「精选条目」中展示。</p>
+              <a href="/#interact" style="font-size:13px; font-weight:600; display:inline-block; margin-top:6px;">进入上传页 →</a>
+            </div>
+          </div>
+          <div class="guide-step" style="padding-bottom:0;">
+            <div class="step-num" style="background:var(--primary-light);">💬</div>
+            <div class="step-body">
+              <h4>参与条目讨论</h4>
+              <p>每个条目详情页底部开放评论区，支持贴图和引用回复。11月8日当天讨论热度最高的是第3集「四股と炬燵」条目，2小时内新增86条评论。</p>
+              <a href="/#comments" style="font-size:13px; font-weight:600; display:inline-block; margin-top:6px;">查看用户评论 →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 右栏 -->
+    <aside class="sidebar-right">
+      <div class="sidebar-block">
+        <div class="sidebar-block-title">本周热榜</div>
+        <ul class="hot-list">
+          <li data-rank="1"><a href="/#rank">暖冬篇第3集 四股と炬燵</a></li>
+          <li data-rank="2"><a href="/#rank">雾之海设定资料第4弹</a></li>
+          <li data-rank="3"><a href="/#rank">秋季观赏会预约破1,240</a></li>
+          <li data-rank="4"><a href="/#rank">同人创作赛初审60件</a></li>
+          <li data-rank="5"><a href="/#rank">仕切对比视频播放12.6万</a></li>
+          <li data-rank="6"><a href="/#rank">徽章隐藏款挂价6,800</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-block">
+        <div class="sidebar-block-title">近期时间线</div>
+        <ul class="timeline-mini">
+          <li><span class="tl-date">11-08</span>《暖冬篇》第3集上线</li>
+          <li><span class="tl-date">11-07</span>限定徽章兑换开启</li>
+          <li><span class="tl-date">11-05</span>创作赛投稿截止，217件</li>
+          <li><span class="tl-date">11-03</span>雾之海出身地公开</li>
+          <li><span class="tl-date">11-02</span>仕切对比视频发布</li>
+          <li><span class="tl-date">10-26</span>观赏会预约达1,240人</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-block sidebar-interact">
+        <div class="sidebar-block-title">快速表态</div>
+        <p style="font-size:12.5px; color:var(--text-secondary); margin-bottom:4px;">第3集「四股と炬燵」你觉得如何？</p>
+        <div class="interact-btns">
+          <button type="button" class="like-btn" data-label="好看">👍 好看</button>
+          <button type="button" class="like-btn" data-label="一般">😐 一般</button>
+        </div>
+        <p id="interactFeedback" style="font-size:12px; color:var(--primary-dark); margin-top:8px; min-height:18px;"></p>
+      </div>
+
+      <div class="sidebar-block">
+        <div class="sidebar-block-title">标签索引</div>
+        <div class="rec-tags">
+          <a href="/#featured">四股</a>
+          <a href="/#featured">霧の海</a>
+          <a href="/#featured">ちゃんこ鍋</a>
+          <a href="/#featured">立合い</a>
+          <a href="/#featured">横纲猫</a>
+          <a href="/#featured">幕内</a>
+          <a href="/#featured">两国</a>
+          <a href="/#featured">若隆景</a>
+        </div>
+      </div>
+    </aside>
+
+  </div><!-- /.main-layout -->
+
+</div><!-- /.container -->
+
+<!-- 页尾 -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">微密圈相扑猫</div>
+        <p class="footer-desc">覆盖2023年至2026年11月的相扑猫动画、赛事、同人与周边内容。条目类型包括单集解析、角色设定、规则考据、交易行情与创作赛记录。每周三、周六更新动态与榜单，每月初更新胜负记录与同人投稿统计。</p>
+      </div>
+      <div class="footer-col">
+        <h4>内容频道</h4>
+        <a href="/#overview">领域概览</a>
+        <a href="/#featured">精选条目</a>
+        <a href="/#updates">最新动态</a>
+        <a href="/#deep-read">深度解析</a>
+        <a href="/#guide">体验指南</a>
+      </div>
+      <div class="footer-col">
+        <h4>社区与参与</h4>
+        <a href="/#comments">用户评论</a>
+        <a href="/#interact">上传作品</a>
+        <a href="/#interact">参与讨论</a>
+        <a href="/#rank">热门榜单</a>
+        <a href="/#recommend">相关推荐</a>
+      </div>
+      <div class="footer-col">
+        <h4>条目分类</h4>
+        <a href="/#featured">动画短片</a>
+        <a href="/#featured">赛事活动</a>
+        <a href="/#featured">角色设定</a>
+        <a href="/#featured">同人创作</a>
+        <a href="/#featured">周边交易</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 微密圈相扑猫内容聚合页 · 示例内容，非官方页面</span>
+      <span>最后更新：2026-11-08 · 对应动态：暖冬篇第3集上线、徽章兑换开启</span>
+    </div>
+  </div>
+</footer>
+
+<!-- 回到顶部 -->
+<button class="back-top" id="backTop" aria-label="回到顶部">↑</button>
+
+<script>
+(function() {
+  'use strict';
+
+  // 移动端菜单
+  var menuToggle = document.getElementById('menuToggle');
+  var sidebarLeft = document.getElementById('sidebarLeft');
+  var overlay = document.getElementById('overlay');
+
+  function closeMenu() {
+    sidebarLeft.classList.remove('open');
+    overlay.classList.remove('show');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  }
+
+  menuToggle.addEventListener('click', function() {
+    var isOpen = sidebarLeft.classList.toggle('open');
+    overlay.classList.toggle('show', isOpen);
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  overlay.addEventListener('click', closeMenu);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  // 点击频道导航后收起菜单
+  sidebarLeft.addEventListener('click', function(e) {
+    if (e.target.closest('a')) {
+      closeMenu();
+    }
+  });
+
+  // 回到顶部
+  var backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', function() {
+    backTop.classList.toggle('show', window.scrollY > window.innerHeight);
+  }, { passive: true });
+
+  backTop.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // 侧栏高亮当前板块
+  var sections = document.querySelectorAll('main section[id]');
+  var channelLinks = sidebarLeft.querySelectorAll('.channel-list a');
+
+  function highlightCurrent() {
+    var scrollPos = window.scrollY + 160;
+    var currentId = '';
+    sections.forEach(function(sec) {
+      if (sec.offsetTop <= scrollPos) {
+        currentId = sec.id;
+      }
+    });
+    channelLinks.forEach(function(link) {
+      var href = link.getAttribute('href');
+      link.classList.toggle('active', href === '/#' + currentId);
+    });
+  }
+
+  window.addEventListener('scroll', highlightCurrent, { passive: true });
+  highlightCurrent();
+
+  // 搜索
+  var searchInput = document.getElementById('searchInput');
+  var searchBtn = document.getElementById('searchBtn');
+  var searchables = document.querySelectorAll('.searchable');
+  var noResult = document.createElement('div');
+  noResult.className = 'no-result';
+  noResult.textContent = '没有找到匹配的条目，试试「雾之海」「四股」「徽章」等关键词。';
+
+  var featuredGrid = document.getElementById('featuredGrid');
+  featuredGrid.parentNode.insertBefore(noResult, featuredGrid.nextSibling);
+
+  function doSearch() {
+    var q = searchInput.value.trim().toLowerCase();
+    if (!q) {
+      searchables.forEach(function(el) { el.style.display = ''; });
+      noResult.classList.remove('show');
+      return;
+    }
+    var visibleCount = 0;
+    searchables.forEach(function(el) {
+      var keywords = (el.getAttribute('data-keywords') || '') + ' ' + el.textContent;
+      var match = keywords.toLowerCase().indexOf(q) !== -1;
+      el.style.display = match ? '' : 'none';
+      if (match) visibleCount++;
+    });
+    noResult.classList.toggle('show', visibleCount === 0);
+  }
+
+  searchBtn.addEventListener('click', doSearch);
+  searchInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') doSearch();
+  });
+  searchInput.addEventListener('input', function() {
+    if (searchInput.value.trim() === '') {
+      searchables.forEach(function(el) { el.style.display = ''; });
+      noResult.classList.remove('show');
+    }
+  });
+
+  // 快速表态按钮
+  var likeBtns = document.querySelectorAll('.like-btn');
+  var feedback = document.getElementById('interactFeedback');
+  likeBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      likeBtns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      feedback.textContent = '已记录：' + btn.getAttribute('data-label') + '（示例反馈）';
+    });
+  });
+
+})();
+</script>
+
+<!-- WebSite 结构化数据 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "微密圈相扑猫",
+  "description": "微密圈相扑猫 内容聚合页，汇集相扑猫系列作品、最新动态、深度解析与用户评论。从经典系列到新作更新，提供条目速览、观看顺序与社区反馈，适合关注相扑猫内容与圈内动态的读者。",
+  "inLanguage": "zh-CN",
+  "about": {
+    "@type": "Thing",
+    "name": "相扑猫",
+    "description": "以相扑为主题的猫角色系列动画、赛事与同人内容"
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "name": "相扑猫精选条目",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "《暖冬篇》第3集「四股と炬燵」"},
+      {"@type": "ListItem", "position": 2, "name": "2026秋季「猫の大相扑」观赏会"},
+      {"@type": "ListItem", "position": 3, "name": "霧の海（雾之海）设定资料"},
+      {"@type": "ListItem", "position": 4, "name": "第12期同人创作赛「冬の場所」"}
+    ]
+  },
+  "dateModified": "2026-11-08"
+}
+</script>
+
+<!-- FAQPage 结构化数据 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "相扑猫动画一共有几季，观看顺序是什么？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "目前共3季：第1季（2023年，12集）、第2季《夏場所篇》（2024年，10集）、第3季《暖冬篇》（2026年10月开播，已更新3集）。按播出顺序看即可，各季之间有少量角色关系延续，比如大黑猫的胜场数会跨季累计，但不影响单集理解。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "雾之海是公猫还是母猫？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "官方设定集第4弹标注为“オス”（公猫），年龄推定3岁。第3集里它把蜜柑让给主角猫的举动被部分观众解读为“母性”，但设定集明确写了“性格温厚，不擅长表达”，没有性别模糊的设定。作者在2026年10月28日的推特空间里也确认了这一点。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "「猫の大相扑」线下活动需要提前买票吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "2026秋季场采用预约制加当日券。预约在10月20日开放，到11月7日已预约1,240人，剩余名额约260个。当日券从13:00在场馆入口发放，数量视预约到场情况而定。去年秋季场当日券在14:10发完，建议预约。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "同人创作赛的投稿作品可以同时发Pixiv吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以，但需要在投稿页勾选“已在其他平台公开”。第12期规则里写明了：在Pixiv公开过的作品不影响参赛资格，但评审时不会因为平台点赞数加分。第11期有两件获奖作品是先发Pixiv再投稿的，评审组在评语里没有提到平台数据。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "限定徽章的隐藏款概率是多少？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "官方没有公布具体概率。根据11月7日兑换首日的社区统计（B站用户“ちゃんこ鍋大好き”整理，样本量约400次兑换），隐藏款“横纲猫”出现率约3.5%，即每28枚左右出现1枚。这个数据是网友自发统计，官方未确认，误差范围可能较大。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "动画里出现的相扑招式都是真实存在的吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "大部分是。第1季到第3季出现的決まり手包括押し出し、寄り切り、突き出し、上手投げ、四股（四股是准备动作不是決まり手，动画里用四股震飞对手属于夸张处理）。第3集雾之海用四股把主角震飞，严格说不是比赛规则内的动作，制作组在设定集里标注为“演出效果”。"
+      }
+    }
+  ]
+}
+</script>
+
+</body>
+              </html>
